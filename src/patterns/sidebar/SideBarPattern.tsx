@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
   CloseButton,
   ContentContainer,
-  LeaveContainer,
   Overlay,
-  SidebarContainer,
-  UserContainer,
+  SidebarContainer
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -74,6 +72,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
           <FontAwesomeIcon
             icon={isOpen ? faArrowLeft : faArrowRight}
             size="lg"
+            color="white"
           />
         </button>{" "}
         <div
@@ -89,7 +88,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
               <CloseButton onClick={onClose}>
                 <FontAwesomeIcon
                   icon={far.faCircleXmark}
-                  color="#004c98"
+                  color="#ffffff"
                   style={{ height: "1.5rem" }}
                 />
               </CloseButton>

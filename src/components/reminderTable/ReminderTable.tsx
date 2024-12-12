@@ -18,120 +18,162 @@ import useReminderTable from "./useReminderTable";
 const ReminderTable = () => {
   const { rows } = useReminderTable();
   return (
-    <div>
-      <Paper
+    <>
+      <p style={{ textAlign: "start", width: "100%", color: "white" }}>
+        Avisos/Lembretes
+      </p>
+      <div
         style={{
           width: "100%",
-          height: "300px",
-          overflowY: "auto",
-          overflowX: "auto",
-          // "box-shadow": "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
         }}
       >
-        <TableContainer style={{ overflowX: "unset" }}>
-          <Table aria-label="simple table">
-            <TableHead
-              style={{
-                backgroundColor: "#f3f4f5",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <TableRow>
-                <TableCell style={{ color: "black", fontWeight: "bold" }}>
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    style={{ marginRight: "10px" }}
-                  />
-                  <span>E-mail</span>
-                </TableCell>
-                <TableCell
-                  style={{ color: "black", fontWeight: "bold" }}
-                  align="center"
-                >
-                  <FontAwesomeIcon
-                    icon={faFileCircleCheck}
-                    style={{ marginRight: "10px" }}
-                  />
-
-                  <span>Status</span>
-                </TableCell>
-
-                <TableCell
-                  style={{ color: "black", fontWeight: "bold" }}
-                  align="center"
-                >
-                  <FontAwesomeIcon
-                    icon={faCalendar}
-                    style={{ marginRight: "10px" }}
-                  />
-                  <span>Data do convite</span>
-                </TableCell>
-
-                <TableCell
-                  style={{ color: "black", fontWeight: "bold" }}
-                  align="center"
-                >
-                  <span>Ações</span>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody style={{ whiteSpace: "nowrap" }}>
-              {rows.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell
-                    style={{ color: "black", fontWeight: "bold" }}
-                    component="th"
-                    scope="row"
-                  >
-                    {row.email}
-                  </TableCell>
-                  <TableCell
-                    style={{ color: "black", fontWeight: "bold" }}
-                    align="center"
-                  >
-                    {row.name}
-                    {/* {row.status === "pending" ? (
-                                    <BadgesComponent
-                                      text={"Pendente"}
-                                      type={"warning"}
-                                    />
-                                  ) : (
-                                    <BadgesComponent
-                                      text={"Aceito"}
-                                      type={"success"}
-                                    />
-                                  )} */}
-                  </TableCell>
-                  <TableCell
-                    style={{ color: "black", fontWeight: "bold" }}
-                    align="center"
-                  ></TableCell>
-
+        <Paper
+          style={{
+            width: "100%",
+            height: "300px",
+            overflowY: "auto",
+            overflowX: "auto",
+          }}
+          sx={{
+            "&::-webkit-scrollbar": {
+              width: "4px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#888",
+              borderRadius: "4px",
+            },
+            "&::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: "#555",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#d3d3d3",
+              borderRadius: "4px",
+            },
+          }}
+        >
+          <TableContainer style={{ overflowX: "unset" }}>
+            <Table aria-label="simple table">
+              <TableHead
+                style={{
+                  backgroundColor: "#11171d",
+                  whiteSpace: "nowrap",
+                  padding: "10px",
+                }}
+              >
+                <TableRow>
                   <TableCell
                     style={{
-                      color: "black",
+                      color: "white",
                       fontWeight: "bold",
+                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
                     }}
-                    align="center"
                   >
-                    <FontAwesomeIcon icon={faTrash} title="Deletar convite" />
-                    {/* <DelContainer
-                      style={{ marginRight: "0px" }}
-                      onClick={() => {
-                        setDelModal(true);
-                        setSelectedId(row);
-                        }}
-                        >
-                        <FontAwesomeIcon icon={faTrash} title="Deletar convite" />
-                    </DelContainer> */}
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <span>E-mail</span>
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faFileCircleCheck}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <span>Status</span>
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCalendar}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <span>Data do convite</span>
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                    }}
+                  >
+                    <span>Ações</span>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </div>
+              </TableHead>
+              <TableBody
+                style={{ whiteSpace: "nowrap", backgroundColor: "#182029" }}
+              >
+                {rows.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                      }}
+                      component="th"
+                      scope="row"
+                    >
+                      {row.email}
+                    </TableCell>
+                    <TableCell
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                      }}
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                      }}
+                    >
+                      {/* Data do convite aqui */}
+                    </TableCell>
+                    <TableCell
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faTrash} title="Deletar convite" />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </div>
+    </>
   );
 };
 

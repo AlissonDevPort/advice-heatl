@@ -5,11 +5,16 @@ export const ContentsContainer = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 85%;
+  height: 100%;
   margin-left: 80px;
-  margin-right: 10px;
 `;
 
 export const FirstChildren = styled.section`
   width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 `;

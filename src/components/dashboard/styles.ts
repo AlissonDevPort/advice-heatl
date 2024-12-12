@@ -5,4 +5,6 @@ export const DashContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #11171d;
+  padding: 5px;
 `;

@@ -20,7 +20,7 @@ export const DoctorSection = styled.section`
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
+    background-color: #d3d3d3;
     border-radius: 4px;
   }
 `;
@@ -31,7 +31,9 @@ export const DoctorContainer = styled.div`
   display: flex;
   align-items: center;
   margin: 10px 0px;
-  background-color: #ababab;
+  background-color: #11171d;
+  color: white;
+  padding: 5px 0px;
 `;
 
 export const Doctor = styled.div`

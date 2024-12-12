@@ -21,10 +21,11 @@ export const SidebarContainer = styled.aside<OverlayProps>`
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #f1f1f1;
+  background-color: #0f1214;
   transition: width 0.5s;
   z-index: 201;
-  margin-top: 50px;
+  margin-top: 53px;
+  border-right: 1px solid rgba(61, 71, 81, 0.3);
 `;
 
 export const CloseButton = styled.button`
@@ -40,40 +41,19 @@ export const CloseButton = styled.button`
     transform: scale(1.2);
   }
 `;
-export const LeaveContainer = styled.div`
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #004c98;
-  color: white;
-  cursor: pointer;
-`;
-export const UserContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0px 10px 0px;
-  border-top: 1px solid #e7e9ec;
-  margin-top: 10px;
-  height: 30px;
-  color: #004c98;
-  background-color: white;
-  // cursor: pointer;
-`;
+
+
 export const ContentContainer = styled.div`
   padding-left: 20px;
   margin-top: 10px;
   display: flex;
   align-items: center;
   height: 40px;
-  color: #004c98;
-  background-color: #f1f1f1;
+  color: white;
+  background-color: rgb(17, 23, 29);
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {
-    color: white;
-    background-color: #004c98;
+    background-color: rgb(30, 39, 49);
   }
 `;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 export const NavbarContainer = styled.header`
-  background-color: #f1f1f1;
+  background-color: #0f1214;
   color: black;
   height: 50px;
   width: 100vw;
   position: fixed;
   top: 0;
-  border-bottom: 1px solid #e7e9ec;
+  border-bottom: 1px solid rgba(61, 71, 81, 0.3);
   @media only screen and (min-width: 768px) and (max-width: 1600px) {
     height: 45px;
   }

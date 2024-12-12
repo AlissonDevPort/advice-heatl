@@ -22,8 +22,9 @@ const Calendar = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StaticDatePicker
             sx={{
-              backgroundColor: "#ababab",
-              input: { color: "white" },
+              color: "white",
+              backgroundColor: "#11171d",
+              input: { color: "white !important" },
               fieldset: { borderColor: "lightgray" },
               "&:hover fieldset": {
                 borderColor: "lightgray",
@@ -41,14 +42,30 @@ const Calendar = () => {
                 backgroundColor: "#bdbdbd",
               },
               ".MuiButton-text": {
-                color: "#424242",
+                color: "#ffffff",
                 "&:hover": {
-                  color: "#b3b3b3",
+                  color: "#ffffff",
                   backgroundColor: "#202020",
                 },
               },
-              ".Mui-selected": {
-                backgroundColor: "#202020 !important",
+              ".MuiTypography-root": {
+                color: "white !important",
+              },
+              ".MuiDayPicker-weekContainer .MuiTypography-root": {
+                color: "white !important",
+              },
+              ".MuiPickersCalendarHeader-root .MuiTypography-root": {
+                color: "white !important",
+              },
+              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root": {
+                color: "white !important",
+              },
+              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected)":
+                {
+                  color: "#636363 !important",
+                },
+              svg: {
+                color: "white",
               },
             }}
             orientation="portrait"

@@ -26,9 +26,7 @@ const Home = () => {
               throw new Error("Function not implemented.");
             }}
           />
-          <p style={{textAlign:'start'}}>DashBoard</p>
           <DashBoard />
-          <p style={{textAlign:'start'}}>Tabela</p>
           <ReminderTable />
         </FirstChildren>
         <DoctorsAndCalendarGroup />
