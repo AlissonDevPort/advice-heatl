@@ -1,8 +1,8 @@
 import styled from "styled-components";
 export const NavbarContainer = styled.header`
   background-color: #0f1214;
-  color: black;
-  height: 50px;
+  color: white;
+  height: 55px;
   width: 100vw;
   position: fixed;
   top: 0;

@@ -41,14 +41,14 @@ const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
       icon: <FontAwesomeIcon icon={faHome} />,
     },
     {
-      title: "Consultas",
-      hr: "/consultas",
-      icon: <FontAwesomeIcon icon={faGear} />,
-    },
-    {
       title: "Agendamentos",
       hr: "/agendamentos",
       icon: <FontAwesomeIcon icon={faTableList} />,
+    },
+    {
+      title: "Consultas",
+      hr: "/consultas",
+      icon: <FontAwesomeIcon icon={faGear} />,
     },
   ];
 

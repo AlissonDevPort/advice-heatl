@@ -24,7 +24,7 @@ export const SidebarContainer = styled.aside<OverlayProps>`
   background-color: #0f1214;
   transition: width 0.5s;
   z-index: 201;
-  margin-top: 53px;
+  margin-top: 58px;
   border-right: 1px solid rgba(61, 71, 81, 0.3);
 `;
 

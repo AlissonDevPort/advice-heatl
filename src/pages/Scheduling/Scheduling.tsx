@@ -1,14 +1,15 @@
 import React from "react";
 import DashBoard from "../../components/dashboard/DashBoard";
-import DoctorsAndCalendarGroup from "../../components/doctorsAndCalendarGroup/DoctorsAndCalendarGroup.tsx";
+
 import ReminderTable from "../../components/reminderTable/ReminderTable";
 import SearchInput from "../../components/searchInput/SearchInput";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
-import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
-import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
+import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
+import { ContentsContainer, FirstChildren, SecondChildren } from "./styles";
+import DoctorsAndCalendarGroup from "../../components/doctorsAndCalendarGroup/DoctorsAndCalendarGroup.tsx";
 
-const Home = () => {
+const Scheduling = () => {
   return (
     <MainContainer>
       <HeaderComponent />
@@ -19,22 +20,13 @@ const Home = () => {
         }}
       />
       <ContentsContainer>
-        <FirstChildren>
-          <SearchInput
-            fullWidth={true}
-            onChange={function (value: string): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-          <DashBoard />
-          <ReminderTable />
-        </FirstChildren>
         <SecondChildren>
           <DoctorsAndCalendarGroup />
         </SecondChildren>
+        <FirstChildren></FirstChildren>
       </ContentsContainer>
     </MainContainer>
   );
 };
 
-export default Home;
+export default Scheduling;

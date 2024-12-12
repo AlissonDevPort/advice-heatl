@@ -27,7 +27,6 @@ const HeaderComponent = () => {
               icon={faCircleUser}
               style={{ height: "30px", marginRight: "10px" }}
             />
-            Usúario
           </IconContainer>
         </Content>
       </NavbarContainer>
