@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { BrainBtn, Content, NavbarContainer } from "./styles";
+import { Content, IconContainer, NavbarContainer } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBrain,
+  faCircleUser,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import LOGO_WITH_SUBTITLE from "../../assets/logo.png";
 
 const HeaderComponent = () => {
   return (
     <>
       <NavbarContainer>
         <Content>
-            <BrainBtn>
-              <FontAwesomeIcon
-                icon={faBrain}
-                style={{ height: "1rem", marginRight: "10px" }}
-              />
-              Criar I.A{" "}
-            </BrainBtn>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img src={LOGO_WITH_SUBTITLE} alt="" style={{ height: "50px" }} />
+          </div>
+          <IconContainer>
+            <FontAwesomeIcon
+              icon={faCircleUser}
+              style={{ height: "30px", marginRight: "10px" }}
+            />
+            Usúario
+          </IconContainer>
         </Content>
       </NavbarContainer>
     </>

@@ -21,10 +21,10 @@ export const SidebarContainer = styled.aside<OverlayProps>`
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #fff;
+  background-color: #f1f1f1;
   transition: width 0.5s;
   z-index: 201;
-  margin-top: 46px;
+  margin-top: 50px;
 `;
 
 export const CloseButton = styled.button`
@@ -69,7 +69,7 @@ export const ContentContainer = styled.div`
   align-items: center;
   height: 40px;
   color: #004c98;
-  background-color: white;
+  background-color: #f1f1f1;
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {

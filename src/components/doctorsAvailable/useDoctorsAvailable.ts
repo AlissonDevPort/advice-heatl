@@ -1,9 +1,11 @@
 import React from "react";
 
 const useDoctorsAvailable = () => {
-  const fakeApiResponse = ["alisson", "advice health doc", "teste"];
+  const fakeApiResponse = [
+   ''
+  ];
 
-  return {fakeApiResponse};
+  return { fakeApiResponse };
 };
 
 export default useDoctorsAvailable;

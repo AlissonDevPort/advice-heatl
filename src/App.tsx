@@ -1,23 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import HeaderComponent from './patterns/header/HeaderPattern'
-import SideBarComponent from './patterns/sidebar/SideBarPattern'
-import DoctorsAndCalendarGroup from './components/doctorsAndCalendarGroup/DoctorsAndCalendarGroup'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <HeaderComponent />
-    <SideBarComponent isOpen={false} onClose={function (): void {
-        throw new Error('Function not implemented.')
-      } } />
-      <DoctorsAndCalendarGroup />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

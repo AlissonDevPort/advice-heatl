@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CloseButton,
   ContentContainer,
@@ -8,8 +8,6 @@ import {
   UserContainer,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-//import LOGO_WITH_SUBTITLE from "/vite.svg";
 
 import {
   faArrowLeft,
@@ -28,70 +26,65 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faChartBar, far } from "@fortawesome/free-regular-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import useSideBar from "./useSideBar";
 
 interface SidebarProps {
-  isOpen: boolean;
   onClose: () => void;
 }
 
-const SideBarComponent:React.FC<SidebarProps > = ({ isOpen, onClose }) => {
-  //const navigate = useNavigate();
+const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
+  const { isOpen, setIsOpen, handleToggleSidebar } = useSideBar();
+
+  const navigate = useNavigate();
   const items = [
     {
       title: "Home",
-      hr: "/home",
+      hr: "/",
       icon: <FontAwesomeIcon icon={faHome} />,
     },
     {
-      title: "Chat",
-      hr: "/chat",
-      icon: <FontAwesomeIcon icon={far.faComment} />,
-    },
-    {
-      title: "I.A's",
-      hr: "/ias",
-      icon: <FontAwesomeIcon icon={faBrain} />,
-    },
-    {
-      title: "API keys",
-      hr: "/keys",
-      icon: <FontAwesomeIcon icon={faKey} />,
-    },
-    {
-      title: "Equipe",
-      hr: "/team",
-      icon: <FontAwesomeIcon icon={faPeopleGroup} />,
-    },
-    {
-      title: "Integração",
-      hr: "/chat/list",
-      icon: <FontAwesomeIcon icon={faPlug} />,
-    },
-    {
-      title: "Usuário",
-      hr: "/user/config",
+      title: "Consultas",
+      hr: "/consultas",
       icon: <FontAwesomeIcon icon={faGear} />,
+    },
+    {
+      title: "Agendamentos",
+      hr: "/agendamentos",
+      icon: <FontAwesomeIcon icon={faTableList} />,
     },
   ];
 
   const logout = () => {
-  //  navigate("/");
+    //  navigate("/");
   };
 
   return (
     <>
       <Overlay isOpen={isOpen} onClick={onClose} />
       <SidebarContainer isOpen={isOpen}>
-        <FontAwesomeIcon icon={faArrowRight}/>
-        {isOpen && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexDirection: "column",
-              height: "100vh",
-            }}
-          >
+        <button
+          onClick={handleToggleSidebar}
+          style={{
+            marginTop: "30px",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={isOpen ? faArrowLeft : faArrowRight}
+            size="lg"
+          />
+        </button>{" "}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "column",
+            height: "100vh",
+          }}
+        >
+          {isOpen && (
             <>
               <CloseButton onClick={onClose}>
                 <FontAwesomeIcon
@@ -101,20 +94,6 @@ const SideBarComponent:React.FC<SidebarProps > = ({ isOpen, onClose }) => {
                 />
               </CloseButton>
               <div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "15px",
-                  }}
-                >
-                  <img
-                    //src={LOGO_WITH_SUBTITLE}
-                    alt=""
-                    style={{ height: "70px" }}
-                  />
-                </div>
                 <div
                   style={{
                     marginTop: "30px",
@@ -135,23 +114,29 @@ const SideBarComponent:React.FC<SidebarProps > = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </>
+          )}
+          {!isOpen && (
             <div>
-              <UserContainer>
-                <FontAwesomeIcon
-                  icon={far.faUser}
-                  style={{
-                    height: "1.2rem",
-                    marginRight: "10px",
-                  }}
-                />
-              </UserContainer>
-
-              <LeaveContainer onClick={logout}>
-                <p>Sair do sistema</p>
-              </LeaveContainer>
+              <div
+                style={{
+                  marginTop: "30px",
+                }}
+              >
+                {items.map((item, index) => (
+                  <Link
+                    to={item.hr}
+                    style={{ textDecoration: "none" }}
+                    key={index}
+                  >
+                    <ContentContainer>
+                      {item.icon}
+                    </ContentContainer>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </SidebarContainer>
     </>
   );

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 export const NavbarContainer = styled.header`
-  background-color: white;
+  background-color: #f1f1f1;
   color: black;
   height: 50px;
-  //padding: 10px 20px;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -17,25 +16,21 @@ export const Content = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0px 15px 0px 15px;
+  padding: 0px 30px 0px 30px;
 `;
 
-export const BrainBtn = styled.button`
+export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   min-width: 120px;
   padding: 7px;
-  color: #004c98;
-  background-color: white;
-  border: 1px solid #004c98;
-  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
- ;; white-space: nowrap;
   &:hover {
     color: white;
-    background-color: #004c98;
+    background-color: rgb(140, 142, 145);
   }
   @media only screen and (min-width: 319px) and (max-width: 769px) {
     font-size: 12px;
