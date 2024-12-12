@@ -3,7 +3,7 @@ import {
   CloseButton,
   ContentContainer,
   Overlay,
-  SidebarContainer
+  SidebarContainer,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -27,11 +27,16 @@ import { Link, useNavigate } from "react-router-dom";
 import useSideBar from "./useSideBar";
 
 interface SidebarProps {
+  isOpen: boolean;
   onClose: () => void;
+  onToggle: () => void;
 }
 
-const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
-  const { isOpen, setIsOpen, handleToggleSidebar } = useSideBar();
+const SideBarComponent: React.FC<SidebarProps> = ({
+  isOpen,
+  onClose,
+  onToggle,
+}) => {
 
   const navigate = useNavigate();
   const items = [
@@ -61,7 +66,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
       <Overlay isOpen={isOpen} onClick={onClose} />
       <SidebarContainer isOpen={isOpen}>
         <button
-          onClick={handleToggleSidebar}
+          onClick={onToggle}
           style={{
             marginTop: "30px",
             background: "none",
@@ -127,9 +132,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({ onClose }) => {
                     style={{ textDecoration: "none" }}
                     key={index}
                   >
-                    <ContentContainer>
-                      {item.icon}
-                    </ContentContainer>
+                    <ContentContainer>{item.icon}</ContentContainer>
                   </Link>
                 ))}
               </div>

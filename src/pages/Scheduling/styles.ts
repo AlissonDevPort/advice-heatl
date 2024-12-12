@@ -7,6 +7,7 @@ export const ContentsContainer = styled.section`
   width: 100%;
   height: 100%;
   margin-left: 80px;
+  margin-right: 20px;
 `;
 
 export const FirstChildren = styled.section`

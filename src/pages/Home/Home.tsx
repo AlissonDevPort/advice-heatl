@@ -7,16 +7,18 @@ import HeaderComponent from "../../patterns/header/HeaderPattern";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
+import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 
 const Home = () => {
+  const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
+  
   return (
     <MainContainer>
       <HeaderComponent />
       <SideBarComponent
-        isOpen={false}
-        onClose={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        isOpen={isOpen}
+        onClose={handleCloseSidebar}
+        onToggle={handleToggleSidebar}
       />
       <ContentsContainer>
         <FirstChildren>
