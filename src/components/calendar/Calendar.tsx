@@ -1,5 +1,8 @@
 import React from "react";
-import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
+import {
+  LocalizationProvider,
+  StaticDatePicker,
+} from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useCalendar from "./useCalendar";
 import { Dayjs } from "dayjs";
@@ -60,6 +63,10 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               },
               ".MuiButton-text": {
                 color: "#ffffff !important",
+                "&:hover": {
+                  color: "#ffffff !important",
+                  backgroundColor: "#202020",
+                },
               },
               ".MuiTypography-root": {
                 color: "white !important",
@@ -70,6 +77,13 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               ".MuiPickersCalendarHeader-root .MuiTypography-root": {
                 color: "white !important",
               },
+              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root": {
+                color: "white !important",
+              },
+              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected)":
+                {
+                  color: "#636363 !important",
+                },
               svg: {
                 color: "white",
               },
