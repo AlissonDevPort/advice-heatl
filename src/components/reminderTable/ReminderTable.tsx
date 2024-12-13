@@ -7,29 +7,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCalendar,
-  faEnvelope,
-  faFileCircleCheck,
-  faPencil,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-import useReminderTable from "./useReminderTable";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { DelContainer, PencilContainer } from "./styles";
 
 interface ReminderTableProps {
   headers: { key: string; label: string }[];
   rows: Record<string, any>[];
   onEditAppointment?: (index: number, updatedData: any) => void;
+  onDeleteAppointment?: (index: number) => void;
 }
 const ReminderTable: React.FC<ReminderTableProps> = ({
   headers,
   rows,
   onEditAppointment,
+  onDeleteAppointment,
 }) => {
   return (
     <>
       <p style={{ textAlign: "start", width: "100%", color: "white" }}>
-        Avisos/Lembretes
+        Consultas
       </p>
       <div
         style={{
@@ -89,7 +85,7 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
               <TableBody
                 style={{ whiteSpace: "nowrap", backgroundColor: "#182029" }}
               >
-                {rows.map((row, rowIndex:number) => (
+                {rows.map((row, rowIndex: number) => (
                   <TableRow key={rowIndex}>
                     {headers.map((header, colIndex) => (
                       <TableCell
@@ -109,13 +105,27 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
                         }}
                       >
                         {header.key === "actions" ? (
-                          <FontAwesomeIcon
-                            icon={faPencil}
-                            onClick={() => {
-                              onEditAppointment &&
-                                onEditAppointment(rowIndex, row);
-                            }}
-                          />
+                          <>
+                            <PencilContainer
+                              onClick={() => {
+                                onEditAppointment &&
+                                  onEditAppointment(rowIndex, row);
+                              }}
+                            >
+                              <FontAwesomeIcon
+                                icon={faPencil}
+                                style={{ marginRight: "8px" }}
+                              />
+                            </PencilContainer>
+                            <DelContainer
+                              onClick={() => {
+                                onDeleteAppointment &&
+                                  onDeleteAppointment(rowIndex);
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faTrash} />
+                            </DelContainer>{" "}
+                          </>
                         ) : (
                           row[header.key]
                         )}

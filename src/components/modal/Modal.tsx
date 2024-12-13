@@ -1,5 +1,4 @@
 import React from "react";
-import { useModal } from "./useModal";
 import {
   ModalOverlay,
   ModalContainer,
@@ -11,6 +10,7 @@ import {
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 interface ModalProps {
   isModalOpen: boolean;
@@ -24,12 +24,12 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({
-  isModalOpen,
+
   closeModal,
   formData,
   onInputChange,
   onSubmit,
-  openModal,
+
 }) => {
   const handleConfirm = () => {
     if (
@@ -42,11 +42,19 @@ const Modal: React.FC<ModalProps> = ({
       !formData.payment ||
       !formData.payed 
     ) {
-      alert("Todos os campos obrigatórios devem ser preenchidos!");
+      toast("Preencha corretamente os campos", {
+            position: "top-right",
+            autoClose: 7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
       return;
     }
 
-    alert("Criado com sucesso!");
     onSubmit(formData);
     closeModal();
   };

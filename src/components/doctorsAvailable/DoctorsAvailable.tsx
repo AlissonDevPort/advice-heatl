@@ -1,11 +1,9 @@
 import React from "react";
-import useDoctorsAvailable from "./useDoctorsAvailable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { Doctor, DoctorContainer, DoctorSection } from "./styles";
 
-const DoctorsAvailable = () => {
-  const { fakeApiResponse } = useDoctorsAvailable();
+const DoctorsAvailable: React.FC = () => {
   const items = [
     {
       doctorName: "Alisson",
@@ -19,12 +17,12 @@ const DoctorsAvailable = () => {
       doctorName: "Anna",
       icon: <FontAwesomeIcon icon={faCircleUser} />,
     },
-    
+
     {
       doctorName: "Bianca",
       icon: <FontAwesomeIcon icon={faCircleUser} />,
     },
-    
+
     {
       doctorName: "James",
       icon: <FontAwesomeIcon icon={faCircleUser} />,

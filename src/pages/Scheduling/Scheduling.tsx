@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
@@ -8,20 +8,10 @@ import Costumer from "../../components/costumer/Costumer.tsx";
 import Modal from "../../components/modal/Modal.tsx";
 import { useModal } from "../../components/modal/useModal.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
-import dayjs, { Dayjs } from "dayjs";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addNewAppointment,
-  updateAppointment,
-} from "../../store/modalSlice.ts";
-import NewCalendar from "../../components/newCalendar/newCalendar.tsx";
-import useCalendar from "../../components/calendar/useCalendar.ts";
-interface Appointment {
-  date: string;
-  name: string;
-}
+
+import { useScheduling } from "./useScheduling.ts";
+
 const Scheduling: React.FC = () => {
-  const dispatch = useDispatch();
   const {
     isModalOpen,
     openModal,
@@ -30,60 +20,18 @@ const Scheduling: React.FC = () => {
     handleInputChange,
     setFormData,
   } = useModal();
-  const {dayValue,setDayValue} = useCalendar()
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-  const [month, setMonth] = useState<number>(new Date().getMonth());
-  const [year, setYear] = useState<number>(new Date().getFullYear());
-
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-
-  const handleAccept = (selectedDate: Dayjs | null) => {
-    if (selectedDate) {
-      setFormData((prev) => ({
-        ...prev,
-        date: selectedDate.format("DD-MM-YYYY"),
-      }));
-      openModal();
-      setIsEditing(false);
-    }
-  };
-
-  const handleSubmitAppointment = (formData: any) => {
-    if (isEditing) {
-      dispatch(updateAppointment({ index: formData.index, data: formData }));
-    } else {
-      dispatch(addNewAppointment(formData));
-    }
-    closeModal();
-  };
-
-  const clearFormData = () => {
-    setFormData({
-      name: "",
-      address: "",
-      birthDate: "",
-      cpf: "",
-      hour: "",
-      payment: "",
-      totalAmount: "",
-      payed: "",
-    });
-  };
-
-  useEffect(() => {
-    if (!isModalOpen) {
-      clearFormData();
-    }
-  }, [isModalOpen]);
-
-  const appointments = useSelector((state: any) => state.modal.appointment);
-
-  const onEditAppointment = (index: number, updatedData: any) => {
-    setIsEditing(true);
-    setFormData(updatedData);
-    openModal();
-  };
+  const {
+    onEditAppointment,
+    handleAccept,
+    handleSubmitAppointment,
+    appointments,
+  } = useScheduling({
+    setFormData: setFormData,
+    closeModal: closeModal,
+    openModal: openModal,
+    isModalOpen: isModalOpen,
+  });
 
   return (
     <MainContainer>
@@ -95,13 +43,13 @@ const Scheduling: React.FC = () => {
       />
       <ContentsContainer>
         <SecondChildren>
-          <DoctorsAndCalendarGroup
-            onAccept={handleAccept}
-          />
-          {/* <NewCalendar/> */}
+          <DoctorsAndCalendarGroup onAccept={handleAccept} />
         </SecondChildren>
         <FirstChildren>
-          <Costumer onEditAppointment={onEditAppointment} />
+          <Costumer
+            onEditAppointment={onEditAppointment}
+            appointments={appointments}
+          />
           {isModalOpen && (
             <Modal
               isModalOpen={isModalOpen}

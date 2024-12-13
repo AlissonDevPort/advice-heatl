@@ -2,7 +2,7 @@ import React from "react";
 import { DashContainer } from "./styles";
 import Chart from "../chart/Chart";
 
-const DashBoard = () => {
+const DashBoard:React.FC = () => {
   return (
     <>
       <p style={{ textAlign: "start", width: "100%", color: "white" }}>

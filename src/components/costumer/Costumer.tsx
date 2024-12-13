@@ -1,8 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCirclePlus,
   faCircleUser,
   faPencil,
   faTrash,
@@ -14,23 +12,18 @@ import {
   CostumerIcons,
 } from "./styles";
 
+
 interface Appointment {
   hour: string;
   name: string;
 }
 
-interface ReduxState {
-  modal: any;
-  appointments: Appointment[];
-}
-
 interface CostumerProps {
   onEditAppointment: (index: number, updatedData: any) => void;
+  appointments?: Appointment[];
 }
-const Costumer: React.FC<CostumerProps> = ({ onEditAppointment }) => {
-  const appointments = useSelector(
-    (state: ReduxState) => state.modal.appointment
-  );
+const Costumer: React.FC<CostumerProps> = ({ onEditAppointment,appointments }) => {
+  
   
   return (
     <CostumerSection>

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  DatePicker,
   LocalizationProvider,
   StaticDatePicker,
 } from "@mui/x-date-pickers";

@@ -10,9 +10,10 @@ import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 import useReminderTable from "../../components/reminderTable/useReminderTable.ts";
 
-const Home = () => {
+const Home:React.FC = () => {
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
   const {headers,rows} = useReminderTable()
+
   return (
     <MainContainer>
       <HeaderComponent />
@@ -25,9 +26,7 @@ const Home = () => {
         <FirstChildren>
           <SearchInput
             fullWidth={true}
-            onChange={function (value: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            onChange={()=>console.log("")}
           />
           <DashBoard />
           <ReminderTable headers={headers} rows={rows}/>

@@ -9,7 +9,7 @@ interface Appointment {
   address: string;
   totalAmount: string;
   payment: string;
-  payed:string
+  payed: string;
 }
 
 interface ModalState {
@@ -37,9 +37,15 @@ const modalSlice = createSlice({
       action: PayloadAction<{ index: number; data: Appointment }>
     ) => {
       const { index, data } = action.payload;
-      console.log(index, data);
       state.appointment = state.appointment.map((appointment, i) =>
         i === index ? { ...appointment, ...data } : appointment
+      );
+    },
+    deleteAppointment: (state, action: PayloadAction<number>) => {
+      const index = action.payload;
+      console.log(state, action);
+      state.appointment = state.appointment.filter(
+        (appointment) => appointment.index !== index
       );
     },
     clearPatients: (state) => {
@@ -48,7 +54,11 @@ const modalSlice = createSlice({
   },
 });
 
-export const { addNewAppointment, updateAppointment, clearPatients } =
-  modalSlice.actions;
+export const {
+  addNewAppointment,
+  updateAppointment,
+  deleteAppointment,
+  clearPatients,
+} = modalSlice.actions;
 
 export default modalSlice.reducer;
