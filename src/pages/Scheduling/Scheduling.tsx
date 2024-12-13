@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
@@ -8,8 +8,8 @@ import Costumer from "../../components/costumer/Costumer.tsx";
 import Modal from "../../components/modal/Modal.tsx";
 import { useModal } from "../../components/modal/useModal.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
-
 import { useScheduling } from "./useScheduling.ts";
+import useCalendar from "../../components/calendar/useCalendar.ts";
 
 const Scheduling: React.FC = () => {
   const {
@@ -26,13 +26,21 @@ const Scheduling: React.FC = () => {
     handleAccept,
     handleSubmitAppointment,
     appointments,
-    onDeletAppointment
+    onDeletAppointment,
   } = useScheduling({
     setFormData: setFormData,
     closeModal: closeModal,
     openModal: openModal,
     isModalOpen: isModalOpen,
   });
+
+  const { datePickerRef, simulateClearClick } = useCalendar();
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      simulateClearClick();
+    }
+  }, [isModalOpen]);
 
   return (
     <MainContainer>
@@ -44,7 +52,10 @@ const Scheduling: React.FC = () => {
       />
       <ContentsContainer>
         <SecondChildren>
-          <DoctorsAndCalendarGroup onAccept={handleAccept} />
+          <DoctorsAndCalendarGroup
+            onAccept={handleAccept}
+            datePickerRef={datePickerRef}
+          />
         </SecondChildren>
         <FirstChildren>
           <Costumer
@@ -52,6 +63,7 @@ const Scheduling: React.FC = () => {
             onDeleteAppointment={onDeletAppointment}
             appointments={appointments}
           />
+
           {isModalOpen && (
             <Modal
               isModalOpen={isModalOpen}

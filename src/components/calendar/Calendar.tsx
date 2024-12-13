@@ -1,20 +1,18 @@
-import React from "react";
-import {
-  LocalizationProvider,
-  StaticDatePicker,
-} from "@mui/x-date-pickers";
+import React, { useEffect, useRef } from "react";
+import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useCalendar from "./useCalendar";
 import { Dayjs } from "dayjs";
 import "dayjs/locale/pt-br";
+
 interface CalendarProps {
   onAccept?: (selectedDate: Dayjs | null) => void;
   onMonthChange?: (currentMonth: number, currentYear: number) => void;
+  datePickerRef?: React.RefObject<any>;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
+const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange, datePickerRef }) => {
   const { dayValue, setDayValue, shouldDisableDate } = useCalendar();
-
   const handleAccept = (newValue: Dayjs | null) => {
     if (onAccept) {
       onAccept(newValue);
@@ -29,9 +27,26 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
     }
   };
 
+  // const datePickerRef = useRef<any>(null);
+
+  // const simulateClearClick = () => {
+  //   if (datePickerRef.current) {
+  //     const buttons = datePickerRef.current.querySelectorAll("button");
+  //     buttons.forEach((button: HTMLButtonElement) => {
+  //       if (
+  //         button.textContent &&
+  //         button.textContent.toUpperCase() === "CLEAR"
+  //       ) {
+  //         console.log(buttons);
+  //         button.click();
+  //       }
+  //     });
+  //   }
+  // };
   return (
     <>
       <div
+        ref={datePickerRef}
         style={{
           display: "flex",
           justifyContent: "center",
@@ -117,6 +132,7 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
             }}
           />
         </LocalizationProvider>
+        {/* <button onClick={simulateClearClick}>aq</button> */}
       </div>
     </>
   );
