@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAppointment, updateAppointment } from "../../store/modalSlice";
 
@@ -47,7 +47,7 @@ const useConsultation = ({
     closeModal();
   };
 
-  const onEditAppointment = (index: number, updatedData: any) => {
+  const onEditAppointment = (_index: number, updatedData: any) => {
     setFormData(updatedData);
     openModal();
   };

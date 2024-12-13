@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Content, IconContainer, NavbarContainer } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBrain,
   faCircleUser,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import LOGO_WITH_SUBTITLE from "../../assets/logo.png";
 
-const HeaderComponent = () => {
+const HeaderComponent:React.FC = () => {
   return (
     <>
       <NavbarContainer>

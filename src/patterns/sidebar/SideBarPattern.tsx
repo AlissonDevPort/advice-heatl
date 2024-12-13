@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   CloseButton,
   ContentContainer,
@@ -10,21 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
   faArrowRight,
-  faBrain,
-  faClose,
   faGear,
   faHome,
-  faKey,
-  faListCheck,
-  faPeopleGroup,
-  faPlug,
-  faRobot,
   faTableList,
-  fas,
 } from "@fortawesome/free-solid-svg-icons";
-import { faChartBar, far } from "@fortawesome/free-regular-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
-import useSideBar from "./useSideBar";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -37,8 +28,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({
   onClose,
   onToggle,
 }) => {
-
-  const navigate = useNavigate();
+ 
   const items = [
     {
       title: "Home",
@@ -57,9 +47,7 @@ const SideBarComponent: React.FC<SidebarProps> = ({
     },
   ];
 
-  const logout = () => {
-    //  navigate("/");
-  };
+ 
 
   return (
     <>

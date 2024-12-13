@@ -87,7 +87,7 @@ export const useScheduling = ({
     }
   }, [isModalOpen]);
 
-  const onEditAppointment = (index: number, updatedData: any) => {
+  const onEditAppointment = (_index: number, updatedData: any) => {
     setIsEditing(true);
     setFormData(updatedData);
     openModal();
