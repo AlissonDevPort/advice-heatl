@@ -11,12 +11,21 @@ import {
   faCalendar,
   faEnvelope,
   faFileCircleCheck,
+  faPencil,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import useReminderTable from "./useReminderTable";
 
-const ReminderTable = () => {
-  const { rows } = useReminderTable();
+interface ReminderTableProps {
+  headers: { key: string; label: string }[];
+  rows: Record<string, any>[];
+  onEditAppointment?: (index: number, updatedData: any) => void;
+}
+const ReminderTable: React.FC<ReminderTableProps> = ({
+  headers,
+  rows,
+  onEditAppointment,
+}) => {
   return (
     <>
       <p style={{ textAlign: "start", width: "100%", color: "white" }}>
@@ -33,6 +42,7 @@ const ReminderTable = () => {
             height: "300px",
             overflowY: "auto",
             overflowX: "auto",
+            backgroundColor: " rgb(24, 32, 41)",
           }}
           sx={{
             "&::-webkit-scrollbar": {
@@ -52,7 +62,7 @@ const ReminderTable = () => {
           }}
         >
           <TableContainer style={{ overflowX: "unset" }}>
-            <Table aria-label="simple table">
+            <Table aria-label="dynamic table">
               <TableHead
                 style={{
                   backgroundColor: "#11171d",
@@ -61,111 +71,56 @@ const ReminderTable = () => {
                 }}
               >
                 <TableRow>
-                  <TableCell
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span>E-mail</span>
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faFileCircleCheck}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span>Status</span>
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faCalendar}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span>Data do convite</span>
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                    }}
-                  >
-                    <span>Ações</span>
-                  </TableCell>
+                  {headers.map((header, index) => (
+                    <TableCell
+                      key={index}
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                      }}
+                    >
+                      {header.label}
+                    </TableCell>
+                  ))}
                 </TableRow>
               </TableHead>
               <TableBody
                 style={{ whiteSpace: "nowrap", backgroundColor: "#182029" }}
               >
-                {rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell
-                      style={{
-                        color: "white",
-                        fontWeight: "bold",
-                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                      }}
-                      component="th"
-                      scope="row"
-                    >
-                      {row.email}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        color: "white",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                      }}
-                    >
-                      {row.name}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        color: "white",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        borderRight: "1px solid rgba(61, 71, 81, 0.3)",
-                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                      }}
-                    >
-                      {/* Data do convite aqui */}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        color: "white",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faTrash} title="Deletar convite" />
-                    </TableCell>
+                {rows.map((row, rowIndex:number) => (
+                  <TableRow key={rowIndex}>
+                    {headers.map((header, colIndex) => (
+                      <TableCell
+                        key={colIndex}
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          borderRight: "1px solid rgba(61, 71, 81, 0.3)",
+                          borderBottom: "1px solid rgba(61, 71, 81, 0.3)",
+                          textAlign: "start",
+                          backgroundColor:
+                            row[header.key] === "Sim"
+                              ? "#04AA6D"
+                              : row[header.key] === "Não"
+                              ? "#ff0000"
+                              : "transparent",
+                        }}
+                      >
+                        {header.key === "actions" ? (
+                          <FontAwesomeIcon
+                            icon={faPencil}
+                            onClick={() => {
+                              onEditAppointment &&
+                                onEditAppointment(rowIndex, row);
+                            }}
+                          />
+                        ) : (
+                          row[header.key]
+                        )}
+                      </TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>

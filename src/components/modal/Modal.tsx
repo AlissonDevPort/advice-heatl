@@ -39,7 +39,8 @@ const Modal: React.FC<ModalProps> = ({
       !formData.birthDate ||
       !formData.address ||
       !formData.totalAmount ||
-      !formData.payment
+      !formData.payment ||
+      !formData.payed 
     ) {
       alert("Todos os campos obrigatórios devem ser preenchidos!");
       return;
@@ -157,6 +158,19 @@ const Modal: React.FC<ModalProps> = ({
                 <option value="pix">PIX</option>
                 <option value="cartao">Cartão</option>
                 <option value="dinheiro">Dinheiro</option>
+              </select>
+            </label>
+            <label>
+              Consulta paga?:
+              <select
+                name="payed"
+                value={formData.payed}
+                onChange={onInputChange}
+                style={{ width: "100%" }}
+              >
+                <option value="">Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
               </select>
             </label>
           </div>

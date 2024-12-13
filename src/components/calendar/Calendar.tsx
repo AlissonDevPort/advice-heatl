@@ -87,17 +87,11 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               },
             }}
             orientation="portrait"
-            //label="Agende aqui"
             value={value}
             onChange={(newValue) => setValue(newValue)}
             shouldDisableDate={shouldDisableDate}
             onAccept={handleAccept}
             onMonthChange={handleMonthChange}
-            //   slotProps={{
-            //     textField: {
-            //       className: "datePickerInput",
-            //     },
-            //   }}
           />
         </LocalizationProvider>
       </div>

@@ -8,10 +8,11 @@ import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
+import useReminderTable from "../../components/reminderTable/useReminderTable.ts";
 
 const Home = () => {
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
-  
+  const {headers,rows} = useReminderTable()
   return (
     <MainContainer>
       <HeaderComponent />
@@ -29,7 +30,7 @@ const Home = () => {
             }}
           />
           <DashBoard />
-          <ReminderTable />
+          <ReminderTable headers={headers} rows={rows}/>
         </FirstChildren>
         <SecondChildren>
           <DoctorsAndCalendarGroup />

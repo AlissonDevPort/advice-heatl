@@ -7,6 +7,7 @@ import { Dayjs } from "dayjs";
 interface GroupProps {
   onAccept?: (selectedDate: Dayjs | null) => void;
   onMonthChange?: (currentMonth: number, currentYear: number) => void;
+  
 }
 
 const DoctorsAndCalendarGroup: React.FC<GroupProps> = ({

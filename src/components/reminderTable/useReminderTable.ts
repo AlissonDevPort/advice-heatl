@@ -1,33 +1,44 @@
 import React from "react";
 
-interface EmailRow {
-  email: string;
-  name: string
-}
 const useReminderTable = () => {
-  const rows: EmailRow[] = [
-    { email: "alisson@teste.com" , name:"alisson"},
-    { email: "anna@teste.com" , name:"anna"},
-    { email: "danilo@teste.com" , name:"danilo"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    { email: "patrick@teste.com" , name:"patrick"},
-    
+  const headers = [
+    { key: "email", label: "E-mail" },
+    { key: "status", label: "Status" },
+    { key: "inviteDate", label: "Data do convite" },
   ];
-  return { rows };
+
+  const rows = [
+    {
+      email: "user1@example.com",
+      status: "Ativo",
+      inviteDate: "2024-12-01",
+    },
+    {
+      email: "user2@example.com",
+      status: "Pendente",
+      inviteDate: "2024-12-02",
+    },
+
+    {
+      email: "user2@example.com",
+      status: "Pendente",
+      inviteDate: "2024-12-02",
+    },
+
+    {
+      email: "user2@example.com",
+      status: "Pendente",
+      inviteDate: "2024-12-02",
+    },
+
+    {
+      email: "user2@example.com",
+      status: "Pendente",
+      inviteDate: "2024-12-02",
+    },
+  ];
+
+  return { headers, rows };
 };
 
 export default useReminderTable;

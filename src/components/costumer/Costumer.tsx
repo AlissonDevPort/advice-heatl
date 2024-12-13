@@ -24,17 +24,20 @@ interface ReduxState {
   appointments: Appointment[];
 }
 
-const Costumer: React.FC = () => {
+interface CostumerProps {
+  onEditAppointment: (index: number, updatedData: any) => void;
+}
+const Costumer: React.FC<CostumerProps> = ({ onEditAppointment }) => {
   const appointments = useSelector(
     (state: ReduxState) => state.modal.appointment
   );
-
+  
   return (
     <CostumerSection>
       {appointments?.length === 0 ? (
         <p style={{ color: "white" }}>Nenhum agendamento encontrado.</p>
       ) : (
-        appointments?.map((value, index) => (
+        appointments?.map((value: any, index: number) => (
           <CostumerContainer key={index}>
             <CostumerComponent>
               <div>{value.hour}</div>
@@ -44,9 +47,11 @@ const Costumer: React.FC = () => {
               <span>{value.name}</span>
             </CostumerComponent>
             <CostumerIcons>
-              <FontAwesomeIcon icon={faPencil} />
+              <FontAwesomeIcon
+                icon={faPencil}
+                onClick={() => onEditAppointment(index, value)}
+              />
               <FontAwesomeIcon icon={faTrash} />
-              <FontAwesomeIcon icon={faCirclePlus} />
             </CostumerIcons>
           </CostumerContainer>
         ))

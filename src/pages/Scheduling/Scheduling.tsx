@@ -10,7 +10,10 @@ import { useModal } from "../../components/modal/useModal.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 import dayjs, { Dayjs } from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewAppointment } from "../../store/modalSlice.ts";
+import {
+  addNewAppointment,
+  updateAppointment,
+} from "../../store/modalSlice.ts";
 interface Appointment {
   date: string;
   name: string;
@@ -32,21 +35,52 @@ const Scheduling: React.FC = () => {
   const [filteredAppointments, setFilteredAppointments] = useState<
     Appointment[]
   >([]);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleAccept = (selectedDate: Dayjs | null) => {
     if (selectedDate) {
-      openModal();
       setFormData((prev) => ({
         ...prev,
         date: selectedDate.format("YYYY-MM-DD"),
       }));
+      openModal();
+      setIsEditing(false);
     }
   };
 
   const handleSubmitAppointment = (formData: any) => {
-    dispatch(addNewAppointment(formData));
+    if (isEditing) {
+      dispatch(updateAppointment({ index: formData.index, data: formData }));
+    } else {
+      dispatch(addNewAppointment(formData));
+    }
+    closeModal();
   };
+  const clearFormData = () => {
+    setFormData({
+      name: "",
+      address: "",
+      birthDate: "",
+      cpf: "",
+      hour: "",
+      payment: "",
+      totalAmount: "",
+      payed: "",
+    });
+  };
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      clearFormData();
+    }
+  }, [isModalOpen]);
   const appointments = useSelector((state: any) => state.modal.appointment);
+
+  const onEditAppointment = (index: number, updatedData: any) => {
+    setIsEditing(true);
+    setFormData(updatedData);
+    openModal();
+  };
 
   const handleMonthChange = (currentMonth: number, currentYear: number) => {
     setMonth(currentMonth);
@@ -64,8 +98,8 @@ const Scheduling: React.FC = () => {
     });
 
     setFilteredAppointments(filtered);
-    console.log(filteredAppointments);
   }, [month, year, appointments]);
+
   return (
     <MainContainer>
       <HeaderComponent />
@@ -82,8 +116,7 @@ const Scheduling: React.FC = () => {
           />
         </SecondChildren>
         <FirstChildren>
-          <Costumer />
-          <button onClick={openModal}>Abrir Modal</button>
+          <Costumer onEditAppointment={onEditAppointment} />
           {isModalOpen && (
             <Modal
               isModalOpen={isModalOpen}
