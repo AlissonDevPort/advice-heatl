@@ -54,10 +54,7 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
             "&::-webkit-scrollbar-track": {
               backgroundColor: "#d3d3d3",
               borderRadius: "4px",
-            },
-            ".MuiButtonBase-root .MuiPickersDay-root .MuiPickersDay-dayWithMargin": {
-              color: " white !important",
-            },
+            }
           }}
         >
           <TableContainer style={{ overflowX: "unset" }}>
