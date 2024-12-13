@@ -6,9 +6,27 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useCalendar from "./useCalendar";
+import { Dayjs } from "dayjs";
 
-const Calendar = () => {
+interface CalendarProps {
+  onAccept?: (selectedDate: Dayjs | null) => void;
+  onMonthChange?: (currentMonth: number, currentYear: number) => void;
+}
+
+const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
   const { value, setValue, shouldDisableDate } = useCalendar();
+  const handleAccept = (newValue: Dayjs | null) => {
+    if (onAccept) {
+      onAccept(newValue);
+    }
+  };
+  const handleMonthChange = (date: Dayjs) => {
+    const currentMonth = date.month();
+    const currentYear = date.year();
+    if (onMonthChange) {
+      onMonthChange(currentMonth, currentYear);
+    }
+  };
   return (
     <>
       <div
@@ -73,6 +91,8 @@ const Calendar = () => {
             value={value}
             onChange={(newValue) => setValue(newValue)}
             shouldDisableDate={shouldDisableDate}
+            onAccept={handleAccept}
+            onMonthChange={handleMonthChange}
             //   slotProps={{
             //     textField: {
             //       className: "datePickerInput",

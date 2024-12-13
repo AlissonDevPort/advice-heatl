@@ -7,13 +7,15 @@ const useHeader = () => {
 
   useEffect(() => {
     const fakeApiResponse = ["2024-12-15", "2024-12-25", "2024-12-30"];
-    
-    const dates = fakeApiResponse.map(date => dayjs(date));
+
+    const dates = fakeApiResponse.map((date) => dayjs(date));
     setDisabledDates(dates);
   }, []);
 
   const shouldDisableDate = (date: Dayjs) => {
-    return disabledDates.some(disabledDate => date.isSame(disabledDate, "day"));
+    return disabledDates.some((disabledDate) =>
+      date.isSame(disabledDate, "day")
+    );
   };
 
   return { value, setValue, shouldDisableDate };

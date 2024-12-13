@@ -15,11 +15,40 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 interface ModalProps {
   isModalOpen: boolean;
   closeModal: () => void;
+  formData: any;
+  onInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  onSubmit: (formData: any) => void;
   openModal: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ closeModal }) => {
-  const { formData, handleInputChange,handleConfirm } = useModal();
+const Modal: React.FC<ModalProps> = ({
+  isModalOpen,
+  closeModal,
+  formData,
+  onInputChange,
+  onSubmit,
+  openModal,
+}) => {
+  const handleConfirm = () => {
+    if (
+      !formData.name ||
+      !formData.hour ||
+      !formData.cpf ||
+      !formData.birthDate ||
+      !formData.address ||
+      !formData.totalAmount ||
+      !formData.payment
+    ) {
+      alert("Todos os campos obrigatórios devem ser preenchidos!");
+      return;
+    }
+
+    alert("Criado com sucesso!");
+    onSubmit(formData);
+    closeModal();
+  };
 
   return (
     <ModalOverlay>
@@ -44,24 +73,25 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
             }}
           >
             <label>
-              Nome Completo*:
+              Nome do paciente*:
               <input
                 type="text"
                 name="name"
                 value={formData.name}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 placeholder="Digite o nome completo"
                 style={{ width: "100%" }}
               />
             </label>
 
             <label>
-              Hora*:
+              Hora da consulta*:
               <input
                 type="text"
                 name="hour"
                 value={formData.hour}
-                onChange={handleInputChange}
+                maxLength={5}
+                onChange={onInputChange}
                 placeholder="Digite a hora da consulta"
                 style={{ width: "100%" }}
               />
@@ -73,7 +103,8 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 type="text"
                 name="cpf"
                 value={formData.cpf}
-                onChange={handleInputChange}
+                maxLength={14}
+                onChange={onInputChange}
                 placeholder="Digite o CPF"
                 style={{ width: "100%" }}
               />
@@ -85,7 +116,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 type="date"
                 name="birthDate"
                 value={formData.birthDate}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 style={{ width: "100%" }}
               />
             </label>
@@ -96,7 +127,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 type="text"
                 name="address"
                 value={formData.address}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 placeholder="Digite o endereço"
                 style={{ width: "100%" }}
               />
@@ -108,7 +139,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
                 type="text"
                 name="totalAmount"
                 value={formData.totalAmount}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 placeholder="Digite o valor"
                 style={{ width: "100%" }}
               />
@@ -119,7 +150,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
               <select
                 name="payment"
                 value={formData.payment}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 style={{ width: "100%" }}
               >
                 <option value="">Selecione</option>
