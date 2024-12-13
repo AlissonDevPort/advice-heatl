@@ -77,15 +77,6 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root": {
                 color: "white !important",
               },
-
-              ".MuiButtonBase-root .MuiPickersDay-root .MuiPickersDay-dayWithMargin":
-                {
-                  color: " white !important",
-                },
-              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root.Mui-disabled:not(.Mui-selected)":
-                {
-                  color: "#636363 !important",
-                },
               svg: {
                 color: "white",
               },
@@ -101,6 +92,17 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
             slotProps={{
               actionBar: {
                 actions: ["today", "clear", "accept"],
+              },
+              day: {
+                sx: {
+                  backgroundColor: "#e0e0e0",
+                  "&:hover": {
+                    backgroundColor: "#d3d3d3",
+                  },
+                  "&.Mui-selected": {
+                    backgroundColor: "#bdbdbd",
+                  },
+                },
               },
             }}
           />
