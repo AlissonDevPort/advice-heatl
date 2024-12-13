@@ -26,6 +26,7 @@ const Scheduling: React.FC = () => {
     handleAccept,
     handleSubmitAppointment,
     appointments,
+    onDeletAppointment
   } = useScheduling({
     setFormData: setFormData,
     closeModal: closeModal,
@@ -48,6 +49,7 @@ const Scheduling: React.FC = () => {
         <FirstChildren>
           <Costumer
             onEditAppointment={onEditAppointment}
+            onDeleteAppointment={onDeletAppointment}
             appointments={appointments}
           />
           {isModalOpen && (

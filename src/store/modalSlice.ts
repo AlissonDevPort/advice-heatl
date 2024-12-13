@@ -43,7 +43,6 @@ const modalSlice = createSlice({
     },
     deleteAppointment: (state, action: PayloadAction<number>) => {
       const index = action.payload;
-      console.log(state, action);
       state.appointment = state.appointment.filter(
         (appointment) => appointment.index !== index
       );

@@ -1,7 +1,11 @@
 import { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { addNewAppointment, updateAppointment } from "../../store/modalSlice";
+import {
+  addNewAppointment,
+  deleteAppointment,
+  updateAppointment,
+} from "../../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 interface SchedulingProps {
@@ -89,11 +93,16 @@ export const useScheduling = ({
     openModal();
   };
 
+  const onDeletAppointment = (index: number) => {
+    dispatch(deleteAppointment(index));
+  };
+
   return {
     onEditAppointment,
     handleAccept,
     handleSubmitAppointment,
     isModalOpen,
-    appointments
+    appointments,
+    onDeletAppointment,
   };
 };

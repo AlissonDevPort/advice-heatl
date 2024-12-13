@@ -10,8 +10,9 @@ import {
   CostumerContainer,
   CostumerComponent,
   CostumerIcons,
+  PencilContainer,
+  DelContainer,
 } from "./styles";
-
 
 interface Appointment {
   hour: string;
@@ -20,11 +21,14 @@ interface Appointment {
 
 interface CostumerProps {
   onEditAppointment: (index: number, updatedData: any) => void;
+  onDeleteAppointment: (index: number) => void;
   appointments?: Appointment[];
 }
-const Costumer: React.FC<CostumerProps> = ({ onEditAppointment,appointments }) => {
-  
-  
+const Costumer: React.FC<CostumerProps> = ({
+  onEditAppointment,
+  onDeleteAppointment,
+  appointments,
+}) => {
   return (
     <CostumerSection>
       {appointments?.length === 0 ? (
@@ -40,11 +44,20 @@ const Costumer: React.FC<CostumerProps> = ({ onEditAppointment,appointments }) =
               <span>{value.name}</span>
             </CostumerComponent>
             <CostumerIcons>
-              <FontAwesomeIcon
-                icon={faPencil}
-                onClick={() => onEditAppointment(index, value)}
-              />
-              <FontAwesomeIcon icon={faTrash} />
+              <>
+                <PencilContainer
+                  onClick={() => onEditAppointment(index, value)}
+                >
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ marginRight: "8px" }}
+                  />
+                </PencilContainer>
+                <DelContainer onClick={() => onDeleteAppointment(index)}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </DelContainer>{" "}
+              </>
+
             </CostumerIcons>
           </CostumerContainer>
         ))
