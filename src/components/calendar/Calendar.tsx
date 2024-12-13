@@ -95,7 +95,7 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               },
               day: {
                 sx: {
-                  backgroundColor: "#e0e0e0",
+                  color: "#ffffff",
                   "&:hover": {
                     backgroundColor: "#d3d3d3",
                   },
