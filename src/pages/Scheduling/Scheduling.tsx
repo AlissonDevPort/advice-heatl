@@ -14,6 +14,8 @@ import {
   addNewAppointment,
   updateAppointment,
 } from "../../store/modalSlice.ts";
+import NewCalendar from "../../components/newCalendar/newCalendar.tsx";
+import useCalendar from "../../components/calendar/useCalendar.ts";
 interface Appointment {
   date: string;
   name: string;
@@ -28,20 +30,19 @@ const Scheduling: React.FC = () => {
     handleInputChange,
     setFormData,
   } = useModal();
+  const {dayValue,setDayValue} = useCalendar()
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [month, setMonth] = useState<number>(new Date().getMonth());
   const [year, setYear] = useState<number>(new Date().getFullYear());
-  const [filteredAppointments, setFilteredAppointments] = useState<
-    Appointment[]
-  >([]);
+
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleAccept = (selectedDate: Dayjs | null) => {
     if (selectedDate) {
       setFormData((prev) => ({
         ...prev,
-        date: selectedDate.format("YYYY-MM-DD"),
+        date: selectedDate.format("DD-MM-YYYY"),
       }));
       openModal();
       setIsEditing(false);
@@ -56,6 +57,7 @@ const Scheduling: React.FC = () => {
     }
     closeModal();
   };
+
   const clearFormData = () => {
     setFormData({
       name: "",
@@ -74,6 +76,7 @@ const Scheduling: React.FC = () => {
       clearFormData();
     }
   }, [isModalOpen]);
+
   const appointments = useSelector((state: any) => state.modal.appointment);
 
   const onEditAppointment = (index: number, updatedData: any) => {
@@ -81,24 +84,6 @@ const Scheduling: React.FC = () => {
     setFormData(updatedData);
     openModal();
   };
-
-  const handleMonthChange = (currentMonth: number, currentYear: number) => {
-    setMonth(currentMonth);
-    setYear(currentYear);
-    console.log(`Mês alterado para: ${currentMonth + 1}, Ano: ${currentYear}`);
-  };
-
-  useEffect(() => {
-    const filtered = appointments.filter((appointment: any) => {
-      const appointmentDate = new Date(appointment.date);
-      const appointmentMonth = appointmentDate.getMonth();
-      const appointmentYear = appointmentDate.getFullYear();
-
-      return appointmentMonth === month && appointmentYear === year;
-    });
-
-    setFilteredAppointments(filtered);
-  }, [month, year, appointments]);
 
   return (
     <MainContainer>
@@ -112,8 +97,8 @@ const Scheduling: React.FC = () => {
         <SecondChildren>
           <DoctorsAndCalendarGroup
             onAccept={handleAccept}
-            onMonthChange={handleMonthChange}
           />
+          {/* <NewCalendar/> */}
         </SecondChildren>
         <FirstChildren>
           <Costumer onEditAppointment={onEditAppointment} />

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import dayjs, { Dayjs } from "dayjs";
 
-const useHeader = () => {
-  const [value, setValue] = useState<Dayjs | null>(null);
+const useCalendar = () => {
+  const [dayValue, setDayValue] = useState<Dayjs | null>(null);
   const [disabledDates, setDisabledDates] = useState<Dayjs[]>([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const useHeader = () => {
     );
   };
 
-  return { value, setValue, shouldDisableDate };
+  return { dayValue, setDayValue, shouldDisableDate };
 };
 
-export default useHeader;
+export default useCalendar;
