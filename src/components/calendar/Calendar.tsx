@@ -58,25 +58,6 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
               ".MuiDayPicker-daySelected": {
                 backgroundColor: "#bdbdbd",
               },
-              ".MuiButton-text": {
-                color: "#ffffff !important",
-                "&:hover": {
-                  color: "#ffffff !important",
-                  backgroundColor: "#202020",
-                },
-              },
-              ".MuiTypography-root": {
-                color: "white !important",
-              },
-              ".MuiDayPicker-weekContainer .MuiTypography-root": {
-                color: "white !important",
-              },
-              ".MuiPickersCalendarHeader-root .MuiTypography-root": {
-                color: "white !important",
-              },
-              ".css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root": {
-                color: "white !important",
-              },
               svg: {
                 color: "white",
               },
@@ -98,6 +79,9 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange }) => {
                   color: "#ffffff",
                   "&:hover": {
                     backgroundColor: "#d3d3d3",
+                  },
+                  "&:disabled": {
+                    color: "#c0c1c2",
                   },
                   "&.Mui-selected": {
                     backgroundColor: "#bdbdbd",
