@@ -1,8 +1,4 @@
-import React from "react";
-import DashBoard from "../../components/dashboard/DashBoard";
-
-import ReminderTable from "../../components/reminderTable/ReminderTable";
-import SearchInput from "../../components/searchInput/SearchInput";
+import React, { useCallback } from "react";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
@@ -14,20 +10,8 @@ import { useModal } from "../../components/modal/useModal.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 
 const Scheduling: React.FC = () => {
-  const {
-    isModalOpen,
-    openModal,
-    closeModal,
-    formData,
-    handleInputChange,
-    handleConfirm,
-  } = useModal({
-    onConfirm: (data) => {
-      console.log("Agendamento confirmado:", data);
-    },
-  });
-  const { isOpen, handleToggleSidebar, handleCloseSidebar } =
-    useSideBar();
+  const { isModalOpen, openModal, closeModal } = useModal();
+  const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
 
   return (
     <MainContainer>
@@ -43,14 +27,15 @@ const Scheduling: React.FC = () => {
         </SecondChildren>
         <FirstChildren>
           <Costumer />
-          {/* <button onClick={openModal}>Abrir Modal</button> */}
-          <Modal
-            isModalOpen={isModalOpen}
-            onClose={closeModal}
-            formData={formData}
-            handleInputChange={handleInputChange}
-            handleConfirm={handleConfirm}
-          />
+          <button onClick={openModal}>Abrir Modal</button>
+
+          {isModalOpen && (
+            <Modal
+              isModalOpen={isModalOpen}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
+          )}
         </FirstChildren>
       </ContentsContainer>
     </MainContainer>
