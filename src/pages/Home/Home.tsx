@@ -5,7 +5,6 @@ import ReminderTable from "../../components/reminderTable/ReminderTable";
 import SearchInput from "../../components/searchInput/SearchInput";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
-import MainContainer from "../../patterns/mainContainer/MainContainer";
 import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 import useReminderTable from "../../components/reminderTable/useReminderTable.ts";
