@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useCalendar from "./useCalendar";
@@ -7,11 +7,10 @@ import "dayjs/locale/pt-br";
 
 interface CalendarProps {
   onAccept?: (selectedDate: Dayjs | null) => void;
-  onMonthChange?: (currentMonth: number, currentYear: number) => void;
   datePickerRef?: React.RefObject<any>;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange, datePickerRef }) => {
+const Calendar: React.FC<CalendarProps> = ({ onAccept,datePickerRef }) => {
   const { dayValue, setDayValue, shouldDisableDate } = useCalendar();
   const handleAccept = (newValue: Dayjs | null) => {
     if (onAccept) {
@@ -19,13 +18,6 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange, datePicker
     }
   };
 
-  const handleMonthChange = (date: Dayjs) => {
-    const currentMonth = date.month();
-    const currentYear = date.year();
-    if (onMonthChange) {
-      onMonthChange(currentMonth, currentYear);
-    }
-  };
 
 
   return (
@@ -95,7 +87,7 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange, datePicker
             }}
             shouldDisableDate={shouldDisableDate}
             onAccept={handleAccept}
-            onMonthChange={handleMonthChange}
+            // onMonthChange={handleMonthChange}
             slotProps={{
               actionBar: {
                 actions: ["today", "clear", "accept"],

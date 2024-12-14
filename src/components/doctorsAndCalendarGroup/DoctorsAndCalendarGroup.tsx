@@ -6,13 +6,11 @@ import { Dayjs } from "dayjs";
 
 interface GroupProps {
   onAccept?: (selectedDate: Dayjs | null) => void;
-  onMonthChange?: (currentMonth: number, currentYear: number) => void;
   datePickerRef?: React.RefObject<any>;
 }
 
 const DoctorsAndCalendarGroup: React.FC<GroupProps> = ({
   onAccept,
-  onMonthChange,
   datePickerRef,
 }) => {
   return (
