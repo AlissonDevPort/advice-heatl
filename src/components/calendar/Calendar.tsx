@@ -27,22 +27,7 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, onMonthChange, datePicker
     }
   };
 
-  // const datePickerRef = useRef<any>(null);
 
-  // const simulateClearClick = () => {
-  //   if (datePickerRef.current) {
-  //     const buttons = datePickerRef.current.querySelectorAll("button");
-  //     buttons.forEach((button: HTMLButtonElement) => {
-  //       if (
-  //         button.textContent &&
-  //         button.textContent.toUpperCase() === "CLEAR"
-  //       ) {
-  //         console.log(buttons);
-  //         button.click();
-  //       }
-  //     });
-  //   }
-  // };
   return (
     <>
       <div

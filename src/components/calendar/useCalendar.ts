@@ -11,7 +11,7 @@ const useCalendar = () => {
       const buttons = datePickerRef.current.querySelectorAll('button');
       buttons.forEach((button: HTMLButtonElement) => {
         if (button.textContent && button.textContent.toUpperCase() === 'CLEAR') {
-          console.log(buttons);
+         
           button.click();
         }
       });

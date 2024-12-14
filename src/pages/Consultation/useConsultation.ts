@@ -1,6 +1,7 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAppointment, updateAppointment } from "../../store/modalSlice";
+import { toast } from "react-toastify";
 
 interface ConsultationProps {
   setFormData: (data: any) => void;
@@ -44,6 +45,7 @@ const useConsultation = ({
 
   const handleSubmitAppointment = (formData: any) => {
     dispatch(updateAppointment({ index: formData.index, data: formData }));
+    toast.success("Consulta alterada com sucesso");
     closeModal();
   };
 
@@ -54,6 +56,7 @@ const useConsultation = ({
 
   const onDeletAppointment = (index: number) => {
     dispatch(deleteAppointment(index));
+    toast.success("Consulta deletada com sucesso");
   };
 
   const clearFormData = () => {
@@ -81,7 +84,7 @@ const useConsultation = ({
     handleSubmitAppointment,
     isModalOpen,
     appointments,
-    onDeletAppointment
+    onDeletAppointment,
   };
 };
 

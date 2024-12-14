@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
@@ -38,7 +38,7 @@ const Scheduling: React.FC = () => {
 
   useEffect(() => {
     if (!isModalOpen) {
-      simulateClearClick();
+     simulateClearClick();
     }
   }, [isModalOpen]);
 

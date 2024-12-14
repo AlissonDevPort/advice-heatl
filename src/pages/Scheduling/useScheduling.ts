@@ -7,7 +7,6 @@ import {
   updateAppointment,
 } from "../../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 interface SchedulingProps {
   setFormData: (data: any) => void;
@@ -47,7 +46,7 @@ export const useScheduling = ({
       setIsEditing(false);
     }
   };
-  const navigate = useNavigate(); 
+
   const handleSubmitAppointment = (formData: any) => {
     if (isEditing) {
       dispatch(updateAppointment({ index: formData.index, data: formData }));
@@ -55,18 +54,7 @@ export const useScheduling = ({
     } else {
       dispatch(addNewAppointment(formData));
       toast.success("Consulta criada com sucesso");
-      navigate("/consultas");
     }
-    toast("Clique em CLEAR antes de criar uma nova consulta e seguir o fluxo", {
-      position: "top-right",
-      autoClose: 7000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
     closeModal();
   };
 
@@ -97,6 +85,7 @@ export const useScheduling = ({
 
   const onDeletAppointment = (index: number) => {
     dispatch(deleteAppointment(index));
+    toast.success("Consulta deletada com sucesso");
   };
 
   return {
