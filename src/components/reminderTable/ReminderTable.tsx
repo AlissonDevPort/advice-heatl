@@ -24,7 +24,14 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
 }) => {
   return (
     <>
-      <p style={{ textAlign: "start", width: "100%", color: "white" }}>
+      <p
+        style={{
+          textAlign: "start",
+          width: "100%",
+          color: "white",
+          marginBottom: "10px",
+        }}
+      >
         Consultas
       </p>
       <div
@@ -35,7 +42,7 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
         <Paper
           style={{
             width: "100%",
-            height: "300px",
+            height: "375px",
             overflowY: "auto",
             overflowX: "auto",
             backgroundColor: " rgb(24, 32, 41)",
@@ -54,7 +61,7 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
             "&::-webkit-scrollbar-track": {
               backgroundColor: "#d3d3d3",
               borderRadius: "4px",
-            }
+            },
           }}
         >
           <TableContainer style={{ overflowX: "unset" }}>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export const NavbarContainer = styled.header`
+  z-index: 9;
   background-color: #0f1214;
   color: white;
   height: 55px;

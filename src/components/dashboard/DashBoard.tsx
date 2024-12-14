@@ -2,10 +2,17 @@ import React from "react";
 import { DashContainer } from "./styles";
 import Chart from "../chart/Chart";
 
-const DashBoard:React.FC = () => {
+const DashBoard: React.FC = () => {
   return (
     <>
-      <p style={{ textAlign: "start", width: "100%", color: "white" }}>
+      <p
+        style={{
+          textAlign: "start",
+          width: "100%",
+          color: "white",
+          marginBottom: "10px",
+        }}
+      >
         Quantidade de consultas por semanas do mês
       </p>
       <DashContainer>

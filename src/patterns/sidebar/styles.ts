@@ -26,6 +26,7 @@ export const SidebarContainer = styled.aside<OverlayProps>`
   z-index: 201;
   margin-top: 58px;
   border-right: 1px solid rgba(61, 71, 81, 0.3);
+  text-align: center;
 `;
 
 export const CloseButton = styled.button`

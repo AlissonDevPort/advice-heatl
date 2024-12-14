@@ -10,12 +10,12 @@ import { ContentsContainer, FirstChildren, SecondChildren } from "./styles.ts";
 import useSideBar from "../../patterns/sidebar/useSideBar.ts";
 import useReminderTable from "../../components/reminderTable/useReminderTable.ts";
 
-const Home:React.FC = () => {
+const Home: React.FC = () => {
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
-  const {headers,rows} = useReminderTable()
+  const { headers, rows } = useReminderTable();
 
   return (
-    <MainContainer>
+    <>
       <HeaderComponent />
       <SideBarComponent
         isOpen={isOpen}
@@ -24,18 +24,15 @@ const Home:React.FC = () => {
       />
       <ContentsContainer>
         <FirstChildren>
-          <SearchInput
-            fullWidth={true}
-            onChange={()=>console.log("")}
-          />
+          <SearchInput fullWidth={true} onChange={() => console.log("")} />
           <DashBoard />
-          <ReminderTable headers={headers} rows={rows}/>
+          <ReminderTable headers={headers} rows={rows} />
         </FirstChildren>
         <SecondChildren>
           <DoctorsAndCalendarGroup />
         </SecondChildren>
       </ContentsContainer>
-    </MainContainer>
+    </>
   );
 };
 

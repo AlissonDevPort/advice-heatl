@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 export const DoctorSection = styled.section`
-  width: 100%;
+  width: 330px;
   max-height: 250px;
   overflow-y: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #888;
@@ -18,7 +20,6 @@ export const DoctorSection = styled.section`
   &::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
-
   &::-webkit-scrollbar-track {
     background-color: #d3d3d3;
     border-radius: 4px;
@@ -26,19 +27,18 @@ export const DoctorSection = styled.section`
 `;
 
 export const DoctorContainer = styled.div`
-  width: 320px;
-  max-height: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
-  margin: 10px 0px;
+  padding: 10px;
   background-color: #11171d;
   color: white;
-  padding: 5px 0px;
+  border-radius: 8px;
+  box-sizing: border-box;
 `;
 
 export const Doctor = styled.div`
   display: flex;
   gap: 20px;
-  margin: 10px 20px;
   align-items: center;
 `;

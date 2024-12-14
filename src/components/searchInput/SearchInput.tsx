@@ -18,7 +18,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ fullWidth, onChange }) => {
         marginBottom: "20px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
         borderRadius: "4px",
-        padding:'10px',
+        padding:'5px',
         display: "flex",
         alignItems: "center",
         backgroundColor: "#11171d",
