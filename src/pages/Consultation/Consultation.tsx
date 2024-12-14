@@ -44,14 +44,17 @@ const Consultation: React.FC = () => {
         onToggle={handleToggleSidebar}
       />
       <Children>
-        <SearchAndFilterContainer>
-          <SearchInput fullWidth={false} onChange={() => console.log("")} />
-        </SearchAndFilterContainer>
         <ReminderTable
+          children={
+            <SearchAndFilterContainer>
+              <SearchInput fullWidth={false} />
+            </SearchAndFilterContainer>
+          }
           headers={headers}
           rows={rows}
           onEditAppointment={onEditAppointment}
           onDeleteAppointment={onDeletAppointment}
+          shouldCloneSearch={true}
         />
       </Children>
       {isModalOpen && (

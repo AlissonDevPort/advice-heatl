@@ -11,8 +11,20 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 5px;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  padding: 5px;
+`;
+
 export const ModalContainer = styled.div`
-  background-color: white;
+  background-color: #11171d;
+  color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -39,7 +51,7 @@ export const ActionsBtn = styled.div`
 export const BtnClose = styled.button`
   border: none;
   padding: 8px;
-  background-color: white;
+  background-color: #182845;
 
   display: flex;
   cursor: pointer;
@@ -50,13 +62,9 @@ export const BtnClose = styled.button`
   }
 `;
 export const Title = styled.h2`
-  margin-bottom: 20px;
-  margin-top: 10px;
-  color: black;
-`;
-export const Text = styled.p`
   margin-bottom: 10px;
-  color: gray;
+  margin-top: 10px;
+  color: white;
 `;
 export const CancelButton = styled.button`
   padding: 8px;
@@ -73,20 +81,7 @@ export const CancelButton = styled.button`
     transform: scale(1.2);
   }
 `;
-export const ConfirmBtn = styled.button`
-  padding: 8px;
-  cursor: pointer;
-  color: white;
-  border: 1px solid;
-  border-radius: 8px;
-  background-color: #f60000;
-  margin-top: 30px;
-  transition: transform 0.3s ease;
 
-  &:hover {
-    transform: scale(1.2);
-  }
-`;
 export const ConfirmSaveButton = styled.button`
   padding: 12px;
   cursor: pointer;
@@ -102,5 +97,3 @@ export const ConfirmSaveButton = styled.button`
     transform: scale(1.1);
   }
 `;
-
-

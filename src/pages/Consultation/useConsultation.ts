@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAppointment, updateAppointment } from "../../store/modalSlice";
+import {
+  deleteAppointment,
+  updateAppointment,
+} from "../../store/slices/modalSlice";
 import { toast } from "react-toastify";
 
 interface ConsultationProps {

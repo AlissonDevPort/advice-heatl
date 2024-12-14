@@ -5,7 +5,7 @@ import {
   addNewAppointment,
   deleteAppointment,
   updateAppointment,
-} from "../../store/modalSlice";
+} from "../../store/slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 interface SchedulingProps {

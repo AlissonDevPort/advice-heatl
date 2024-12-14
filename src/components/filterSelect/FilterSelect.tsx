@@ -1,43 +1,23 @@
-// import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { sortAppointments } from "../../store/slices/modalSlice";
 
-// const FilterSelect = () => {
-//   const appointments = useSelector(
-//     (state: ReduxState) => state.modal.appointment
-//   );
-//   const dispatch = useDispatch();
-//   const [selectedFilter, setSelectedFilter] = useState("index"); 
+const FilterSelect: React.FC = () => {
+  const dispatch = useDispatch();
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sortBy = event.target.value as "index" | "name";
+    dispatch(sortAppointments(sortBy));
+  };
 
-//   const handleFilterChange = (filter: string) => {
-//     setSelectedFilter(filter);
+  return (
+    <div>
+      <select onChange={handleSortChange}>
+        <option value="index">Ordenar por Índice</option>
+        <option value="name">Ordenar por Nome</option>
+      </select>
+    </div>
+  );
+};
 
-    
-//     let sortedAppointments = [...appointments];
-//     if (filter === "name") {
-//       sortedAppointments.sort((a, b) =>
-//         a.name.localeCompare(b.name) 
-//       );
-//     }
-//     dispatch(updateFilteredAppointments(sortedAppointments));
-//   };
-
-//   return (
-//     <select
-//       value={selectedFilter}
-//       onChange={(e) => handleFilterChange(e.target.value)}
-//       style={{
-//         padding: "8px",
-//         backgroundColor: "#11171d",
-//         color: "white",
-//         borderRadius: "4px",
-//         marginBottom: "20px",
-//       }}
-//     >
-//       <option value="index">Ordenar por Índice</option>
-//       <option value="name">Ordenar por Nome</option>
-//     </select>
-//   );
-// };
-
-// export default FilterSelect;
+export default FilterSelect;

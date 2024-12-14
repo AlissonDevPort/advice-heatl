@@ -42,22 +42,14 @@ const modalSlice = createSlice({
       );
     },
     deleteAppointment: (state, action: PayloadAction<number>) => {
-      const index = action.payload;
       state.appointment = state.appointment.filter(
-        (appointment) => appointment.index !== index
+        (appointment) => appointment.index !== action.payload
       );
-    },
-    clearPatients: (state) => {
-      state.appointment = [];
     },
   },
 });
 
-export const {
-  addNewAppointment,
-  updateAppointment,
-  deleteAppointment,
-  clearPatients,
-} = modalSlice.actions;
+export const { addNewAppointment, updateAppointment, deleteAppointment } =
+  modalSlice.actions;
 
 export default modalSlice.reducer;

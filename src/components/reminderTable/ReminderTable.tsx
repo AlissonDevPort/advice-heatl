@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -15,15 +15,55 @@ interface ReminderTableProps {
   rows: Record<string, any>[];
   onEditAppointment?: (index: number, updatedData: any) => void;
   onDeleteAppointment?: (index: number) => void;
+  children?: React.ReactNode;
+  shouldCloneSearch?: boolean; 
 }
 const ReminderTable: React.FC<ReminderTableProps> = ({
   headers,
   rows,
   onEditAppointment,
   onDeleteAppointment,
+  children,
+  shouldCloneSearch = false, 
 }) => {
+  const [filteredRows, setFilteredRows] = useState(rows);
+
+  useEffect(() => {
+    setFilteredRows(rows);
+  }, [rows]);
+
+  // const handleSearch = (searchedVal) => {
+  //   const filteredRows = APIChatTableInCache.filter((row) => {
+  //     // Verifica se o valor pesquisado está presente no nome OU na descrição
+  //     return row.title.toLowerCase().includes(searchedVal.toLowerCase());
+  //   });
+  //   if (filteredRows.length === 0) {
+  //     return setNoFilteredValue(true);
+  //   }
+  //   setNoFilteredValue(false);
+  //   setRows(filteredRows);
+  // };
+
+  const handleSearch = (query: string) => {
+    const filtered = rows.filter((row) =>
+      row.name.toLowerCase().includes(query.toLowerCase()) 
+    );
+    setFilteredRows(filtered);
+    console.log(filtered);
+  };
+
+  // useEffect(() => {
+  //   setFilteredRows(filtered);
+  // }, [APIChatTableInCache]);
   return (
     <>
+       {shouldCloneSearch && children && React.isValidElement(children) && 
+        React.cloneElement(children as React.ReactElement, {
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+            handleSearch(event.target.value);
+          },
+        })
+      }
       <p
         style={{
           textAlign: "start",
@@ -92,7 +132,7 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
               <TableBody
                 style={{ whiteSpace: "nowrap", backgroundColor: "#182029" }}
               >
-                {rows.map((row, rowIndex: number) => (
+                {filteredRows.map((row, rowIndex: number) => (
                   <TableRow key={rowIndex}>
                     {headers.map((header, colIndex) => (
                       <TableCell

@@ -5,12 +5,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchInputProps {
   fullWidth: boolean;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ fullWidth, onChange }) => {
   const requestSearch = (value: string) => {
-    onChange(value);
+   onChange && onChange(value);
   };
   return (
     <div
@@ -18,7 +18,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ fullWidth, onChange }) => {
         marginBottom: "20px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
         borderRadius: "4px",
-        padding:'5px',
+        padding:'10px',
         display: "flex",
         alignItems: "center",
         backgroundColor: "#11171d",
@@ -28,7 +28,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ fullWidth, onChange }) => {
     >
       <InputBase
         type="text"
-        placeholder="Pesquisar..."
+        placeholder="Pesquisar por nome..."
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
           requestSearch(event.target.value)
         }

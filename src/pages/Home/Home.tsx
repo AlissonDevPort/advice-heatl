@@ -23,9 +23,9 @@ const Home: React.FC = () => {
       />
       <ContentsContainer>
         <FirstChildren>
-          <SearchInput fullWidth={true} onChange={() => console.log("")} />
+          <SearchInput fullWidth={true} />
           <DashBoard />
-          <ReminderTable headers={headers} rows={rows} />
+          <ReminderTable headers={headers} rows={rows} children={""}/>
         </FirstChildren>
         <SecondChildren>
           <DoctorsAndCalendarGroup />

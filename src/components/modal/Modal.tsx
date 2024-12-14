@@ -7,6 +7,8 @@ import {
   Title,
   ConfirmSaveButton,
   ActionsBtn,
+  Input,
+  Select,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -24,12 +26,10 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({
-
   closeModal,
   formData,
   onInputChange,
   onSubmit,
-
 }) => {
   const handleConfirm = () => {
     if (
@@ -40,18 +40,18 @@ const Modal: React.FC<ModalProps> = ({
       !formData.address ||
       !formData.totalAmount ||
       !formData.payment ||
-      !formData.payed 
+      !formData.payed
     ) {
       toast("Preencha corretamente os campos", {
-            position: "top-right",
-            autoClose: 7000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+        position: "top-right",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
 
@@ -66,7 +66,7 @@ const Modal: React.FC<ModalProps> = ({
           <BtnClose onClick={closeModal}>
             <FontAwesomeIcon
               icon={faXmark}
-              style={{ color: "gray", height: "20px" }}
+              style={{ color: "white", height: "20px" }}
             />
           </BtnClose>
         </BtnHolder>
@@ -83,107 +83,98 @@ const Modal: React.FC<ModalProps> = ({
           >
             <label>
               Nome do paciente*:
-              <input
+              <Input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={onInputChange}
                 placeholder="Digite o nome completo"
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               Hora da consulta*:
-              <input
+              <Input
                 type="text"
                 name="hour"
                 value={formData.hour}
                 maxLength={5}
                 onChange={onInputChange}
                 placeholder="Digite a hora da consulta"
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               CPF*:
-              <input
+              <Input
                 type="text"
                 name="cpf"
                 value={formData.cpf}
                 maxLength={14}
                 onChange={onInputChange}
                 placeholder="Digite o CPF"
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               Data de Nascimento*:
-              <input
+              <Input
                 type="date"
                 name="birthDate"
                 value={formData.birthDate}
                 onChange={onInputChange}
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               Endereço*:
-              <input
+              <Input
                 type="text"
                 name="address"
                 value={formData.address}
                 onChange={onInputChange}
                 placeholder="Digite o endereço"
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               Valor a pagar*:
-              <input
+              <Input
                 type="text"
                 name="totalAmount"
                 value={formData.totalAmount}
                 onChange={onInputChange}
                 placeholder="Digite o valor"
-                style={{ width: "100%" }}
               />
             </label>
 
             <label>
               Pagamento:
-              <select
+              <Select
                 name="payment"
                 value={formData.payment}
                 onChange={onInputChange}
-                style={{ width: "100%" }}
               >
                 <option value="">Selecione</option>
                 <option value="pix">PIX</option>
                 <option value="cartao">Cartão</option>
                 <option value="dinheiro">Dinheiro</option>
-              </select>
+              </Select>
             </label>
             <label>
               Consulta paga?:
-              <select
+              <Select
                 name="payed"
                 value={formData.payed}
                 onChange={onInputChange}
-                style={{ width: "100%" }}
               >
                 <option value="">Selecione</option>
                 <option value="Sim">Sim</option>
                 <option value="Não">Não</option>
-              </select>
+              </Select>
             </label>
           </div>
         </div>
-
         <ActionsBtn>
           <ConfirmSaveButton onClick={handleConfirm}>
             Concluir
