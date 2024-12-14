@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const CostumerSection = styled.section`
   width: 100%;
-  max-height: 70%;
+  max-height: 750px;
   overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
   &::-webkit-scrollbar {
     width: 4px;
   }

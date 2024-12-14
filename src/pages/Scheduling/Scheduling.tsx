@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
-import MainContainer from "../../patterns/mainContainer/MainContainer";
 import SideBarComponent from "../../patterns/sidebar/SideBarPattern";
 import { ContentsContainer, FirstChildren, SecondChildren } from "./styles";
 import DoctorsAndCalendarGroup from "../../components/doctorsAndCalendarGroup/DoctorsAndCalendarGroup.tsx";
@@ -38,12 +37,12 @@ const Scheduling: React.FC = () => {
 
   useEffect(() => {
     if (!isModalOpen) {
-     simulateClearClick();
+      simulateClearClick();
     }
   }, [isModalOpen]);
 
   return (
-    <MainContainer>
+    <>
       <HeaderComponent />
       <SideBarComponent
         isOpen={isOpen}
@@ -51,32 +50,31 @@ const Scheduling: React.FC = () => {
         onToggle={handleToggleSidebar}
       />
       <ContentsContainer>
-        <SecondChildren>
+        <FirstChildren>
           <DoctorsAndCalendarGroup
             onAccept={handleAccept}
             datePickerRef={datePickerRef}
           />
-        </SecondChildren>
-        <FirstChildren>
+        </FirstChildren>
+        <SecondChildren>
           <Costumer
             onEditAppointment={onEditAppointment}
             onDeleteAppointment={onDeletAppointment}
             appointments={appointments}
           />
-
-          {isModalOpen && (
-            <Modal
-              isModalOpen={isModalOpen}
-              openModal={openModal}
-              closeModal={closeModal}
-              formData={formData}
-              onInputChange={handleInputChange}
-              onSubmit={handleSubmitAppointment}
-            />
-          )}
-        </FirstChildren>
+        </SecondChildren>
+        {isModalOpen && (
+          <Modal
+            isModalOpen={isModalOpen}
+            openModal={openModal}
+            closeModal={closeModal}
+            formData={formData}
+            onInputChange={handleInputChange}
+            onSubmit={handleSubmitAppointment}
+          />
+        )}
       </ContentsContainer>
-    </MainContainer>
+    </>
   );
 };
 

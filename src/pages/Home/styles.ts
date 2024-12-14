@@ -6,8 +6,6 @@ export const ContentsContainer = styled.section`
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  /* overflow-y: auto; 
-  height: 100vh;  */
   @media (min-width: 850px) {
     flex-direction: row;
     height: 100vh;

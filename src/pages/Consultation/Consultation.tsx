@@ -1,5 +1,5 @@
 import React from "react";
-import { Children } from "./styles";
+import { Children, SearchAndFilterContainer } from "./styles";
 import ReminderTable from "../../components/reminderTable/ReminderTable";
 import MainContainer from "../../patterns/mainContainer/MainContainer";
 import HeaderComponent from "../../patterns/header/HeaderPattern";
@@ -44,11 +44,14 @@ const Consultation: React.FC = () => {
         onToggle={handleToggleSidebar}
       />
       <Children>
-        <SearchInput fullWidth={false} onChange={() => console.log("")} />
+        <SearchAndFilterContainer>
+          <SearchInput fullWidth={false} onChange={() => console.log("")} />
+        </SearchAndFilterContainer>
         <ReminderTable
           headers={headers}
           rows={rows}
-          onEditAppointment={onEditAppointment} onDeleteAppointment={onDeletAppointment}
+          onEditAppointment={onEditAppointment}
+          onDeleteAppointment={onDeletAppointment}
         />
       </Children>
       {isModalOpen && (

@@ -19,3 +19,10 @@ export const Children = styled.section`
   flex-direction: column;
   gap: 20px;
 `;
+
+export const SearchAndFilterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
