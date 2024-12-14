@@ -10,15 +10,13 @@ interface CalendarProps {
   datePickerRef?: React.RefObject<any>;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ onAccept,datePickerRef }) => {
+const Calendar: React.FC<CalendarProps> = ({ onAccept, datePickerRef }) => {
   const { dayValue, setDayValue, shouldDisableDate } = useCalendar();
   const handleAccept = (newValue: Dayjs | null) => {
     if (onAccept) {
       onAccept(newValue);
     }
   };
-
-
 
   return (
     <>
@@ -83,7 +81,10 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept,datePickerRef }) => {
             orientation="portrait"
             value={dayValue}
             onChange={(newValue) => {
-              setDayValue(newValue);
+              {
+                setDayValue(newValue),
+                  console.log(newValue && newValue.format("DD-MM-YYYY"));
+              }
             }}
             shouldDisableDate={shouldDisableDate}
             onAccept={handleAccept}
