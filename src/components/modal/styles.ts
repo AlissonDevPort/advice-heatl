@@ -14,8 +14,8 @@ export const ModalOverlay = styled.div`
 
 export const Input = styled.input`
   width: 100%;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 5px;
+  box-sizing: border-box;  
 `;
 
 export const Select = styled.select`
