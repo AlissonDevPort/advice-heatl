@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# **Calendário de Agendamentos**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Descrição**
 
-Currently, two official plugins are available:
+A aplicação tem como objetivo fornecer um sistema de agendamentos de compromissos, permitindo que os usuários visualizem, adicionem, editem e excluam compromissos de maneira fácil e intuitiva. O calendário interativo permite que os usuários filtrem os compromissos por data e exibam as informações de forma organizada.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação segue boas práticas de desenvolvimento, incluindo:
 
-## Expanding the ESLint configuration
+- **Responsabilidade Única (Single Responsibility Principle)**: Cada componente e função tem uma responsabilidade clara e única, o que facilita a manutenção e a escalabilidade da aplicação.
+- **Gerenciamento eficiente de estado com Redux**: A aplicação utiliza Redux para gerenciar o estado global, garantindo que as modificações nos dados sejam refletidas de maneira consistente e previsível em toda a aplicação.
+- **Componentização com Styled Components**: Os componentes são reutilizáveis e com estilo modular, facilitando a manutenção e a personalização da interface.
+- **Filtros dinâmicos e interatividade**: Utilização de componentes como Material-UI (MUI) para permitir a filtragem dinâmica de compromissos e a interação com o calendário.
+- **Notificações de feedback**: A integração com a biblioteca Toastify garante que o usuário receba notificações claras sobre ações de sucesso ou falha.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **Funcionalidades Principais:**
+- Exibição de consultas em um calendário interativo.
+- Filtro de consultas por data.
+- Adição, edição e exclusão de compromissos.
+- Notificações de sucesso/erro/informações usando **Toastify**.
+- Gerenciamento eficiente de estado com **Redux**.
 
-- Configure the top-level `parserOptions` property like this:
+## **Tecnologias Utilizadas**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**: Biblioteca JavaScript para a construção da interface de usuário.
+- **Redux**: Para gerenciar o estado da aplicação de maneira global e eficiente.
+- **Styled Components**: Para estilizar os componentes da aplicação de forma modular e com escopo local.
+- **Toastify**: Biblioteca para exibir notificações simples e elegantes (sucesso, erro, etc.).
+- **Material-UI **: Framework de UI para construção do calendário interativo e outros componentes da interface.
+
+## **Instalação e Execução**
+
+### **Passo 1: Clonar o repositório**
+Clone este repositório para sua máquina local utilizando o comando:
+
+```bash
+git clone https://github.com/AlissonDevPort/advice-heatl
+por fim digite o comando npm run dev
+```
+Passo 2: Instalar as dependências
+Entre na pasta do projeto e instale as dependências:
+
+```bash
+npm install
+por fim digite o comando npm run dev
+```
+Passo 3: Iniciar a aplicação
+Após a instalação das dependências, inicie a aplicação:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## **Imagens da Aplicação**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Tela Principal com Calendário e Agendamentos
+![Tela Principal](assets/home.png)
+
+### Adicionando um Novo Agendamento
+![Adicionar Agendamento](assets/modal-view.png)
+
+### Notificação de Sucesso
+![Notificação de Sucesso](assets/redux-view.png)
+
+---
