@@ -24,7 +24,6 @@ const Scheduling: React.FC = () => {
     onEditAppointment,
     handleAccept,
     handleSubmitAppointment,
-    appointments,
     onDeletAppointment,
   } = useScheduling({
     setFormData: setFormData,
@@ -33,11 +32,8 @@ const Scheduling: React.FC = () => {
     isModalOpen: isModalOpen,
   });
 
-  const {
-    datePickerRef,
-    simulateClearClick,
-    filteredAppointments,
-  } = useCalendar();
+  const { datePickerRef, simulateClearClick, filteredAppointments } =
+    useCalendar();
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -64,9 +60,7 @@ const Scheduling: React.FC = () => {
           <Costumer
             onEditAppointment={onEditAppointment}
             onDeleteAppointment={onDeletAppointment}
-            appointments={
-              filteredAppointments ? filteredAppointments : appointments
-            }
+            appointments={filteredAppointments}
           />
         </SecondChildren>
         {isModalOpen && (
