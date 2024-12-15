@@ -5,6 +5,7 @@ interface Appointment {
   name: string;
   hour: string;
   cpf: string;
+  date: string;
   birthDate: string;
   address: string;
   totalAmount: string;
@@ -14,10 +15,12 @@ interface Appointment {
 
 interface ModalState {
   appointment: Appointment[];
+  filteredAppointments: Appointment[];
 }
 
 const initialState: ModalState = {
   appointment: [],
+  filteredAppointments: [],
 };
 
 const modalSlice = createSlice({
@@ -46,10 +49,17 @@ const modalSlice = createSlice({
         (appointment) => appointment.index !== action.payload
       );
     },
+    setFilteredAppointments: (state, action: PayloadAction<Appointment[]>) => {
+      state.filteredAppointments = action.payload;
+    },
   },
 });
 
-export const { addNewAppointment, updateAppointment, deleteAppointment } =
-  modalSlice.actions;
+export const {
+  addNewAppointment,
+  updateAppointment,
+  deleteAppointment,
+  setFilteredAppointments,
+} = modalSlice.actions;
 
 export default modalSlice.reducer;

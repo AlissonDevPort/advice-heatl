@@ -1,24 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import {  useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilteredAppointments } from "../../store/slices/modalSlice";
 
-interface Appointment {
-  index: number;
-  name: string;
-  hour: string;
-  cpf: string;
-  date: string;
-  birthDate: string;
-  address: string;
-  totalAmount: string;
-  payment: string;
-  payed: string;
-}
 const useCalendar = () => {
-  const [testinho, setTestinho] = useState<Appointment[]>();
   const [dayValue, setDayValue] = useState<Dayjs | null>(null);
   const [disabledDates, setDisabledDates] = useState<Dayjs[]>([]);
   const datePickerRef = useRef<any>(null);
+  const dispatch = useDispatch();
+
+  const appointments = useSelector((state: any) => state.modal.appointment);
+  const filteredAppointments = useSelector(
+    (state: any) => state.modal.filteredAppointments
+  );
 
   const simulateClearClick = () => {
     if (datePickerRef.current) {
@@ -29,13 +23,23 @@ const useCalendar = () => {
           button.textContent.toUpperCase() === "CLEAR"
         ) {
           button.click();
+          //aqui utilizei o dayy para contornar um problema
+          // com a atualização do redux do antigo > novo item
+          // solução provisoria funcional, porem peca no UI UX
+          const today = dayjs();
+          setDayValue(today);
         }
       });
     }
   };
 
   useEffect(() => {
-    const fakeApiResponse = ["2024-12-15", "2024-12-25", "2024-12-30"];
+    const fakeApiResponse = [
+      "2024-12-15",
+      "2024-12-25",
+      "2024-12-30",
+      "2024-12-31",
+    ];
     const dates = fakeApiResponse.map((date) => dayjs(date));
     setDisabledDates(dates);
   }, []);
@@ -46,21 +50,17 @@ const useCalendar = () => {
     );
   };
 
-  const appointments = useSelector((state: any) => state.modal.appointment);
-
   const handleFilterByDay = (query: any) => {
-    const testinho123 = query.format("DD-MM-YYYY")
+    const queryFormatted = query.format("DD-MM-YYYY");
     const filtered = appointments.filter((appointment: any) =>
-      appointment.date.includes(testinho123)
+      appointment.date.includes(queryFormatted)
     );
-    setTestinho(filtered);
-    console.log(filtered);
-    console.log(testinho);
+    dispatch(setFilteredAppointments(filtered));
   };
 
   useEffect(() => {
     if (dayValue !== null) {
-      handleFilterByDay(dayValue && dayValue);
+      handleFilterByDay(dayValue);
     }
   }, [dayValue]);
 
@@ -70,6 +70,8 @@ const useCalendar = () => {
     shouldDisableDate,
     simulateClearClick,
     datePickerRef,
+    filteredAppointments,
+    handleFilterByDay,
   };
 };
 

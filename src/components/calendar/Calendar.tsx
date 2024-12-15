@@ -81,14 +81,10 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, datePickerRef }) => {
             orientation="portrait"
             value={dayValue}
             onChange={(newValue) => {
-              {
-                setDayValue(newValue),
-                  console.log(newValue && newValue.format("DD-MM-YYYY"));
-              }
+              setDayValue(newValue);
             }}
             shouldDisableDate={shouldDisableDate}
             onAccept={handleAccept}
-            // onMonthChange={handleMonthChange}
             slotProps={{
               actionBar: {
                 actions: ["today", "clear", "accept"],
@@ -110,7 +106,6 @@ const Calendar: React.FC<CalendarProps> = ({ onAccept, datePickerRef }) => {
             }}
           />
         </LocalizationProvider>
-        {/* <button onClick={simulateClearClick}>aq</button> */}
       </div>
     </>
   );

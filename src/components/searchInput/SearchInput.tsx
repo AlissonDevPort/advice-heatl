@@ -15,7 +15,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ fullWidth, onChange }) => {
   return (
     <div
       style={{
-        marginBottom: "20px",
+        marginBottom: "10px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
         borderRadius: "4px",
         padding:'10px',

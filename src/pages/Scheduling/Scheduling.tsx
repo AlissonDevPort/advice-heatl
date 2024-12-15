@@ -33,7 +33,11 @@ const Scheduling: React.FC = () => {
     isModalOpen: isModalOpen,
   });
 
-  const { datePickerRef, simulateClearClick } = useCalendar();
+  const {
+    datePickerRef,
+    simulateClearClick,
+    filteredAppointments,
+  } = useCalendar();
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -60,7 +64,9 @@ const Scheduling: React.FC = () => {
           <Costumer
             onEditAppointment={onEditAppointment}
             onDeleteAppointment={onDeletAppointment}
-            appointments={appointments}
+            appointments={
+              filteredAppointments ? filteredAppointments : appointments
+            }
           />
         </SecondChildren>
         {isModalOpen && (

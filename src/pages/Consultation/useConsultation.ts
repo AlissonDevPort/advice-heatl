@@ -48,7 +48,7 @@ const useConsultation = ({
 
   const handleSubmitAppointment = (formData: any) => {
     dispatch(updateAppointment({ index: formData.index, data: formData }));
-    toast.success("Consulta alterada com sucesso");
+    toast.info(`Consulta do paciente ${formData.name} alterada com sucesso`);
     closeModal();
   };
 

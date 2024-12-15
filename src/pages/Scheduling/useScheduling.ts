@@ -50,10 +50,10 @@ export const useScheduling = ({
   const handleSubmitAppointment = (formData: any) => {
     if (isEditing) {
       dispatch(updateAppointment({ index: formData.index, data: formData }));
-      toast.success("Consulta alterada com sucesso");
+      toast.info(`Consulta do paciente ${formData.name} alterada com sucesso`);
     } else {
       dispatch(addNewAppointment(formData));
-      toast.success("Consulta criada com sucesso");
+      toast.success(`Consulta criada com sucesso para o dia ${formData.date}`);
     }
     closeModal();
   };

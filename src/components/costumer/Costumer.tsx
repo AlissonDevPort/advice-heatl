@@ -32,7 +32,7 @@ const Costumer: React.FC<CostumerProps> = ({
   return (
     <CostumerSection>
       {appointments?.length === 0 ? (
-        <p style={{ color: "white" }}>Nenhum agendamento encontrado.</p>
+        <p style={{ color: "white" }}>Nenhum agendamento encontrado no dia de hoje.</p>
       ) : (
         appointments?.map((value: any, index: number) => (
           <CostumerContainer key={index}>
