@@ -22,6 +22,7 @@ A aplicação segue boas práticas de desenvolvimento, incluindo:
 ## **Tecnologias Utilizadas**
 
 - **React**: Biblioteca JavaScript para a construção da interface de usuário.
+- **Typescript**: Para uma melhor segurança e robustez no projeto.
 - **Redux**: Para gerenciar o estado da aplicação de maneira global e eficiente.
 - **Styled Components**: Para estilizar os componentes da aplicação de forma modular e com escopo local.
 - **Toastify**: Biblioteca para exibir notificações simples e elegantes (sucesso, erro, etc.).
