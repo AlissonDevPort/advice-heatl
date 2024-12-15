@@ -88,6 +88,18 @@ export const useScheduling = ({
     toast.success("Consulta deletada com sucesso");
   };
 
+  useEffect(()=>{
+     toast.info("Selecione uma data e depois aperte em OK para adicionar a consulta", {
+            position: "top-right",
+            autoClose: 7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+  },[])
   return {
     onEditAppointment,
     handleAccept,
