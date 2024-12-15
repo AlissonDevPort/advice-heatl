@@ -25,7 +25,7 @@ export const FirstChildren = styled.div`
 `;
 
 export const SecondChildren = styled.div`
-margin-right:10px;
+  margin-right:10px;
   width: 80%;
   @media (min-width: 850px) {
     margin-top: 85px;

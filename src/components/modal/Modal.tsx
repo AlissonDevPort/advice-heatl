@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({
       !formData.payment ||
       !formData.payed
     ) {
-      toast("Preencha corretamente os campos", {
+      toast.warning("Preencha corretamente os campos", {
         position: "top-right",
         autoClose: 7000,
         hideProgressBar: false,

@@ -29,6 +29,8 @@ export const ModalContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  height: 70%;
+  overflow-y: auto;
   @media (min-width: 320px) {
     width: 80%;
   }
@@ -66,31 +68,16 @@ export const Title = styled.h2`
   margin-top: 10px;
   color: white;
 `;
-export const CancelButton = styled.button`
-  padding: 8px;
-  cursor: pointer;
-  color: white;
-  border: 1px solid;
-  border-radius: 8px;
-  background-color: gray;
-  margin-top: 30px;
-  margin-right: 10px;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-`;
 
 export const ConfirmSaveButton = styled.button`
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   color: white;
   border: 1px solid;
   border-radius: 8px;
   background-color: #28a745;
-  margin-top: 30px;
-  font-size: 17px;
+  margin-top: 15px;
+  font-size: 15px;
   transition: transform 0.3s ease;
 
   &:hover {

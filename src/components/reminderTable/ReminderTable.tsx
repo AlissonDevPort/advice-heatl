@@ -32,29 +32,13 @@ const ReminderTable: React.FC<ReminderTableProps> = ({
     setFilteredRows(rows);
   }, [rows]);
 
-  // const handleSearch = (searchedVal) => {
-  //   const filteredRows = APIChatTableInCache.filter((row) => {
-  //     // Verifica se o valor pesquisado está presente no nome OU na descrição
-  //     return row.title.toLowerCase().includes(searchedVal.toLowerCase());
-  //   });
-  //   if (filteredRows.length === 0) {
-  //     return setNoFilteredValue(true);
-  //   }
-  //   setNoFilteredValue(false);
-  //   setRows(filteredRows);
-  // };
-
   const handleSearch = (query: string) => {
     const filtered = rows.filter((row) =>
       row.name.toLowerCase().includes(query.toLowerCase()) 
     );
     setFilteredRows(filtered);
-    console.log(filtered);
   };
 
-  // useEffect(() => {
-  //   setFilteredRows(filtered);
-  // }, [APIChatTableInCache]);
   return (
     <>
        {shouldCloneSearch && children && React.isValidElement(children) && 

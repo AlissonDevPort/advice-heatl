@@ -36,13 +36,14 @@ const Consultation: React.FC = () => {
   });
 
   return (
-    <MainContainer>
-      <HeaderComponent />
+    <>
+    <HeaderComponent />
       <SideBarComponent
-        isOpen={isOpen}
-        onClose={handleCloseSidebar}
-        onToggle={handleToggleSidebar}
+      isOpen={isOpen}
+      onClose={handleCloseSidebar}
+      onToggle={handleToggleSidebar}
       />
+      <MainContainer>
       <Children>
         <ReminderTable
           children={
@@ -55,19 +56,20 @@ const Consultation: React.FC = () => {
           onEditAppointment={onEditAppointment}
           onDeleteAppointment={onDeletAppointment}
           shouldCloneSearch={true}
-        />
+          />
       </Children>
       {isModalOpen && (
         <Modal
-          isModalOpen={isModalOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-          formData={formData}
-          onInputChange={handleInputChange}
-          onSubmit={handleSubmitAppointment}
+        isModalOpen={isModalOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSubmit={handleSubmitAppointment}
         />
       )}
     </MainContainer>
+      </>
   );
 };
 

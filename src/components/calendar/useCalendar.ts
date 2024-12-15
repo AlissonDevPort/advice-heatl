@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 interface Appointment {
   index: number;
@@ -55,6 +55,7 @@ const useCalendar = () => {
     );
     setTestinho(filtered);
     console.log(filtered);
+    console.log(testinho);
   };
 
   useEffect(() => {
