@@ -23,6 +23,8 @@ interface ModalProps {
   ) => void;
   onSubmit: (formData: any) => void;
   openModal: () => void;
+  validateFields: () => boolean;
+  formErrors: any;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -30,31 +32,14 @@ const Modal: React.FC<ModalProps> = ({
   formData,
   onInputChange,
   onSubmit,
+  validateFields,
+  formErrors
 }) => {
   const handleConfirm = () => {
-    if (
-      !formData.name ||
-      !formData.hour ||
-      !formData.cpf ||
-      !formData.birthDate ||
-      !formData.address ||
-      !formData.totalAmount ||
-      !formData.payment ||
-      !formData.payed
-    ) {
-      toast.warning("Preencha corretamente os campos", {
-        position: "top-right",
-        autoClose: 7000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    const isValid = validateFields();
+    if (!isValid) {
       return;
     }
-
     onSubmit(formData);
     closeModal();
   };
@@ -90,6 +75,11 @@ const Modal: React.FC<ModalProps> = ({
                 onChange={onInputChange}
                 placeholder="Digite o nome completo"
               />
+              {formErrors.name && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.name}
+                </p>
+              )}
             </label>
 
             <label>
@@ -102,6 +92,11 @@ const Modal: React.FC<ModalProps> = ({
                 onChange={onInputChange}
                 placeholder="Digite a hora da consulta"
               />
+              {formErrors.hour && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.hour}
+                </p>
+              )}
             </label>
 
             <label>
@@ -114,6 +109,11 @@ const Modal: React.FC<ModalProps> = ({
                 onChange={onInputChange}
                 placeholder="Digite o CPF"
               />
+              {formErrors.cpf && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.cpf}
+                </p>
+              )}
             </label>
 
             <label>
@@ -124,6 +124,11 @@ const Modal: React.FC<ModalProps> = ({
                 value={formData.birthDate}
                 onChange={onInputChange}
               />
+              {formErrors.birthDate && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.birthDate}
+                </p>
+              )}
             </label>
 
             <label>
@@ -135,6 +140,11 @@ const Modal: React.FC<ModalProps> = ({
                 onChange={onInputChange}
                 placeholder="Digite o endereço"
               />
+              {formErrors.address && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.address}
+                </p>
+              )}
             </label>
 
             <label>
@@ -146,6 +156,11 @@ const Modal: React.FC<ModalProps> = ({
                 onChange={onInputChange}
                 placeholder="Digite o valor"
               />
+              {formErrors.totalAmount && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.totalAmount}
+                </p>
+              )}
             </label>
 
             <label>
@@ -160,6 +175,11 @@ const Modal: React.FC<ModalProps> = ({
                 <option value="cartao">Cartão</option>
                 <option value="dinheiro">Dinheiro</option>
               </Select>
+              {formErrors.payment && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.payment}
+                </p>
+              )}
             </label>
             <label>
               Consulta paga?:
@@ -172,6 +192,11 @@ const Modal: React.FC<ModalProps> = ({
                 <option value="Sim">Sim</option>
                 <option value="Não">Não</option>
               </Select>
+              {formErrors.payed && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {formErrors.payed}
+                </p>
+              )}
             </label>
           </div>
         </div>

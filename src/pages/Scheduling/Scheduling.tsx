@@ -18,6 +18,8 @@ const Scheduling: React.FC = () => {
     formData,
     handleInputChange,
     setFormData,
+    formErrors,
+    validateFields
   } = useModal();
   const { isOpen, handleToggleSidebar, handleCloseSidebar } = useSideBar();
   const {
@@ -71,6 +73,8 @@ const Scheduling: React.FC = () => {
             formData={formData}
             onInputChange={handleInputChange}
             onSubmit={handleSubmitAppointment}
+            formErrors={formErrors}
+            validateFields={validateFields}
           />
         )}
       </ContentsContainer>

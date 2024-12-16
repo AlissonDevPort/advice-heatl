@@ -22,6 +22,8 @@ const Consultation: React.FC = () => {
     formData,
     handleInputChange,
     setFormData,
+    formErrors,
+    validateFields
   } = useModal();
 
   const {
@@ -70,6 +72,8 @@ const Consultation: React.FC = () => {
           formData={formData}
           onInputChange={handleInputChange}
           onSubmit={handleSubmitAppointment}
+          formErrors={formErrors}
+          validateFields={validateFields}
         />
       )}
     </>
