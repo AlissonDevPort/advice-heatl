@@ -12,7 +12,6 @@ import {
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { toast } from "react-toastify";
 
 interface ModalProps {
   isModalOpen: boolean;
