@@ -55,12 +55,12 @@ npm run dev
 ## **Imagens da Aplicação**
 
 ### Tela Principal com Calendário e Agendamentos
-![Tela Principal](assets/home.png)
+![Tela Principal](src/assets/home.png)
 
 ### Adicionando um Novo Agendamento
-![Adicionar Agendamento](assets/modal-view.png)
+![Adicionar Agendamento](src/assets/modal-view.png)
 
 ### Notificação de Sucesso
-![Notificação de Sucesso](assets/redux-view.png)
+![Notificação de Sucesso](src/assets/redux-view.png)
 
 ---
