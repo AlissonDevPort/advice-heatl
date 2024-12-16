@@ -34,7 +34,7 @@ A aplicação segue boas práticas de desenvolvimento, incluindo:
 Clone este repositório para sua máquina local utilizando o comando:
 
 ```bash
-git clone https://github.com/AlissonDevPort/advice-heatl
+git clone git@github.com:AlissonDevPort/advice-heatl.git
 ```
 Passo 2: Instalar as dependências
 Entre na pasta do projeto e instale as dependências:
