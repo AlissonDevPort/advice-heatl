@@ -34,19 +34,16 @@ A aplicação segue boas práticas de desenvolvimento, incluindo:
 Clone este repositório para sua máquina local utilizando o comando:
 
 ```bash
-git clone https://github.com/AlissonDevPort/advice-heatl
-por fim digite o comando npm run dev
+git clone git@github.com:AlissonDevPort/advice-heatl.git
 ```
 Passo 2: Instalar as dependências
 Entre na pasta do projeto e instale as dependências:
 
 ```bash
 npm install
-por fim digite o comando npm run dev
 ```
 Passo 3: Iniciar a aplicação
 Após a instalação das dependências, inicie a aplicação:
-
 ```bash
 npm run dev
 ```
